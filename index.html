@@ -1,922 +1,1336 @@
-
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth dark">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SARA IMTIYAZ | UI/UX Portfolio</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sara Imtiyaz — Portfolio & Case Studies</title>
+<meta name="description" content="Sara Imtiyaz — UI/UX Designer portfolio & case studies.">
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Playfair+Display:ital,wght@0,500;1,500;1,600&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<script>
+  (function(){
+    // Forces the website to ALWAYS load in Light Mode first
+    try{
+      localStorage.removeItem('theme');
+      document.documentElement.removeAttribute('data-theme');
+    }catch(e){}
+  })();
+</script>
+
+<style>
+  :root{
+    /* MIST & PETAL COLOR PALETTE */
+    --bg-0: #F4EFEA;           /* Warm Linen (Light Base) */
+    --bg-1: #E9E2D8;           /* Warm Linen (Slightly darker for contrast) */
+    --surface: #FFFFFF;        /* Pure white for cards */
+    --surface-2: #F8F5F1;      /* Off-white surface */
+    --surface-3: #EFEAE4;
     
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-    <script src="https://cdn.tailwindcss.com"></script>
+    --hairline: #D3C9C2;       /* Borders */
+    --hairline-soft: #E4DDD6;
     
-    <script>
-        tailwind.config = {
-            darkMode: 'class', // Enables manual toggle
-            theme: {
-                extend: {
-                    colors: {
-                        noir: {
-                            base: '#121212',    
-                            surface: '#0F0F0F', 
-                            highlight: '#1A1A1A',   
-                        },
-                        gold: {
-                            DEFAULT: '#C5A065', 
-                            light: '#E5C585',  
-                            dark: '#8A7045',     
-                        },
-                        text: {
-                            main: '#FFFFFF',
-                            muted: '#A3A3A3',   
-                        }
-                    },
-                    fontFamily: {
-                        serif: ['"Playfair Display"', 'serif'],
-                        sans: ['"Lato"', 'sans-serif'],
-                    },
-                    boxShadow: {
-                        'glass': '0 8px 32px 0 rgba(0, 0, 0, 0.3)',
-                        'gold-glow': '0 0 15px rgba(197, 160, 101, 0.2)',
-                    }
-                }
-            }
-        }
-    </script>
+    --text-main: #4B3F38;      /* Soft Espresso (Primary Text/Headings) */
+    --text-1: #665A52;         /* Soft Espresso Lighter */
+    --text-2: #847870;         /* Muted Text */
+    --text-3: #ABA098;
+    
+    --accent-mauve: #917782;   /* Muted Mauve */
+    --accent-blush: #CBAFA5;   /* Dusty Blush */
+    --accent-sage: #999B85;    /* Sage Leaf */
 
-    <style>
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #050505; }
-        .dark ::-webkit-scrollbar-track { background: #050505; }
-        :not(.dark) ::-webkit-scrollbar-track { background: #f0f0f0; }
-        
-        ::-webkit-scrollbar-thumb { background: #C5A065; border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: #8A7045; }
+    --glass-1: rgba(255,255,255, 0.7);
+    --glass-2: rgba(248,245,241, 0.85);
+    --glass-border: rgba(75, 63, 56, 0.08);
+    --glass-border-hover: rgba(145, 119, 130, 0.3);
+    
+    --n-white: #4B3F38; 
+    --n-text-1: #665A52;
+    --n-text-2: #847870;
+    --n-text-3: #ABA098;
+    --n-line: rgba(75, 63, 56, 0.1);
+    
+    --ease: cubic-bezier(.16,.84,.44,1);
+    --rail-w: 118px;
+    --maxw: 1180px;
+  }
 
-        /* Apple Glass Navbar */
-        .apple-nav {
-            backdrop-filter: blur(20px) saturate(180%);
-            -webkit-backdrop-filter: blur(20px) saturate(180%);
-            transition: background 0.3s ease, border 0.3s ease;
-        }
-        
-        /* --- LIGHT MODE NAVBAR (GOLD STROKE ADDED) --- */
-        :not(.dark) .apple-nav {
-            background: rgba(255, 255, 255, 0.9);
-            border: 1.5px solid #C5A065; /* Added Solid Gold Stroke */
-            box-shadow: 0 4px 20px rgba(197, 160, 101, 0.25); /* Gold Glow */
-        }
-        
-        /* Dark Mode Nav */
-        .dark .apple-nav {
-            background: rgba(18, 18, 18, 0.7);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-        }
+  /* DARK MODE — LIGHT ALMOND ON DEEP CHARCOAL */
+  html[data-theme="dark"]{
+    --bg-0:#262424;
+    --bg-1:#201e1e;
+    --surface:#2e2b2b;
+    --surface-2:#353131;
+    --surface-3:#3c3737;
 
-        /* Modern Glass Card */
-        .glass-card {
-            backdrop-filter: blur(10px);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
-        /* --- LIGHT MODE CARD STYLES (GOLD STROKE ADDED) --- */
-        :not(.dark) .glass-card {
-            background: rgba(255, 255, 255, 0.95);
-            /* Stronger Gold Border for Light Mode */
-            border: 1.5px solid rgba(197, 160, 101, 0.6); 
-            box-shadow: 0 4px 15px rgba(197, 160, 101, 0.1);
-        }
-        :not(.dark) .glass-card:hover {
-            border: 1.5px solid #C5A065;
-            box-shadow: 0 10px 40px -10px rgba(197, 160, 101, 0.4);
-            transform: translateY(-5px);
-        }
+    --hairline:#4a4444;
+    --hairline-soft:#322e2e;
 
-        /* --- DARK MODE CARD STYLES --- */
-        .dark .glass-card {
-            background: linear-gradient(145deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-        }
-        .dark .glass-card:hover {
-            border-color: rgba(197, 160, 101, 0.3);
-            transform: translateY(-5px);
-        }
+    --text-main:#EEE5DA;
+    --white:#EEE5DA;
+    --text-1:#D9CFC2;
+    --text-2:#B8AEA0;
+    --text-3:#8A8078;
 
-        /* Gold Gradient Text */
-        .text-gold-gradient {
-            background: linear-gradient(to right, #E5C585, #C5A065, #8A7045);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+    --glass-1:rgba(38,36,36,0.55);
+    --glass-2:rgba(20,19,19,0.85);
+    --glass-border:rgba(238,229,218,0.09);
+    --glass-border-hover:rgba(238,229,218,0.20);
 
-        /* Falling Stars Animation */
-        .star-container {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            pointer-events: none; 
-            z-index: 1; 
-            overflow: hidden;
-        }
-        .star {
-            position: absolute; top: -10px;
-            border-radius: 50%;
-            animation-name: fall;
-            animation-timing-function: linear;
-            animation-iteration-count: infinite;
-        }
-        /* Light Mode Stars (Gold Dust) */
-        :not(.dark) .star {
-            background: #C5A065; 
-        }
-        /* Dark Mode Stars (White) */
-        .dark .star {
-            background: #FFFFFF;
-            box-shadow: 0 0 4px rgba(255, 255, 255, 0.8);
-        }
+    --n-white:#EEE5DA;
+    --n-text-1:#D9CFC2;
+    --n-text-2:#B0A69A;
+    --n-text-3:#7A7168;
+    --n-line:rgba(238,229,218,0.06);
 
-        @keyframes fall {
-            0% { transform: translateY(-10vh); opacity: 0; }
-            10% { opacity: 1; }
-            90% { opacity: 1; }
-            100% { transform: translateY(110vh); opacity: 0; }
-        }
+    /* accents restyled for dark */
+    --accent-mauve:#C6A878;
+    --accent-blush:#E4D2B8;
+    --accent-sage:#9C9280;
+  }
+  
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; scroll-behavior:auto !important;}
+  }
+  body{
+    background:var(--bg-0); color:var(--text-main);
+    font-family:'Inter', sans-serif; font-weight:400; line-height:1.6;
+    overflow-x:hidden; max-width:100vw; -webkit-font-smoothing:antialiased;
+    transition:background .4s var(--ease), color .4s var(--ease);
+  }
+  ::selection{ background:var(--accent-mauve); color:#fff; }
+  a{ color:inherit; text-decoration:none; }
+  img{ max-width:100%; display:block; }
+  .wrap{ max-width:var(--maxw); margin:0 auto; padding:0 32px; }
+  @media (max-width:640px){ .wrap{ padding:0 22px; } }
 
-        /* --- 3D Gallery Section Styles --- */
+  .eyebrow{
+    font-family:'JetBrains Mono', monospace; font-size:11.5px; letter-spacing:.18em; text-transform:uppercase;
+    color:var(--text-2); display:flex; align-items:center; gap:10px;
+  }
+  .eyebrow::before{ content:''; width:20px; height:1px; background:var(--text-3); }
+  .eyebrow.on-dark{ color:var(--text-1); }
 
-        .gallery-3d-section {
-            width: 100%;
-            height: auto; 
-            min-height: 800px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-            position: relative;
-        }
+  .bg-fixed{
+    position:fixed; inset:0; z-index:-2; pointer-events:none;
+    background:
+      radial-gradient(1000px 640px at 88% -6%, rgba(145, 119, 130, 0.08), transparent 60%),
+      radial-gradient(800px 560px at -4% 108%, rgba(203, 175, 165, 0.08), transparent 60%),
+      var(--bg-0);
+  }
+  .bg-grain{
+    position:fixed; inset:0; z-index:-1; pointer-events:none; opacity:.04; mix-blend-mode:multiply;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
 
-        .gallery-container {
-            position: relative;
-            width: 100%;
-            max-width: 1000px;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            perspective: 1000px; 
-        }
+  /* DECORATIVE FLOATING DOOSTLES */
+  .deco-svg {
+    position: absolute;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.25;
+    animation: gentleFloat 5s ease-in-out infinite;
+  }
+  .deco-svg.delay-1 { animation-delay: 1.5s; }
+  .deco-svg.delay-2 { animation-delay: 3s; }
+  
+  @keyframes gentleFloat {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-6px); }
+  }
 
-        .gallery-track {
-            position: relative;
-            width: 100%;
-            height: 350px; 
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            transform-style: preserve-3d;
-        }
+  @media (prefers-reduced-motion: reduce) {
+    .deco-svg { animation: none !important; }
+  }
 
-        .gallery-card {
-            position: absolute;
-            width: 350px; 
-            height: 200px; 
-            border-radius: 20px;
-            overflow: hidden;
-            transition: all 0.5s ease-in-out;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            opacity: 0.6;
-            cursor: pointer;
-            background: #000; 
-        }
-        
-        /* --- LIGHT MODE GALLERY CARD STROKE --- */
-        :not(.dark) .gallery-card {
-            border: 1.5px solid #C5A065; /* Gold Border in Light Mode */
-            box-shadow: 0 10px 30px rgba(197, 160, 101, 0.25);
-        }
+  /* BRAND & RAIL */
+  .brand-mark{
+    position:fixed; top:38px; left:34px; z-index:201;
+    font-family:'Playfair Display', serif; font-size:22px; letter-spacing:.08em;
+    color:var(--text-main); text-transform:uppercase; cursor:pointer;
+  }
+  .brand-mark span{ color:var(--accent-mauve); }
 
-        .g-image-wrapper {
-            width: 100%;
-            height: 100%;
-        }
+  .rail-shell{
+    position:fixed; top:50%; left:26px; transform:translateY(-50%); z-index:200;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .rail{
+    position:relative; z-index:1;
+    display:flex; flex-direction:column; align-items:center;
+    width:64px; padding:0; background:none; border:none; box-shadow:none;
+  }
+  .rail-nav{ display:flex; flex-direction:column; gap:14px; align-items:center; }
+  .rail-item{
+    position:relative; width:44px; height:44px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    color:var(--text-3); border:none; background:none;
+    transition:color .3s, transform .35s var(--ease); cursor:pointer;
+  }
+  .rail-item svg{ width:20px; height:20px; position:relative; z-index:1; transition:transform .35s var(--ease); }
+  .rail-item:hover, .rail-item.active{ color:var(--text-main); transform:scale(1.18); }
+  .rail-item:active svg{ transform:scale(0.8); }
+  .rail-item .tip{
+    position:absolute; left:56px; top:50%; transform:translate(-8px,-50%) scale(.92);
+    font-family:'JetBrains Mono', monospace; font-size:10.5px; letter-spacing:.08em; text-transform:uppercase;
+    background:var(--text-main); color:var(--surface); padding:8px 14px; border-radius:20px; white-space:nowrap;
+    box-shadow:0 10px 24px -8px rgba(75, 63, 56, 0.4); opacity:0; pointer-events:none; transition:opacity .28s var(--ease), transform .28s var(--ease);
+  }
+  .rail-item:hover .tip{ opacity:1; transform:translate(0,-50%) scale(1); }
+  @media (max-width:860px){ .rail-shell, .brand-mark{ display:none; } }
 
-        .g-image-wrapper img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
+  /* SOCIAL DOCK */
+  .social-dock{
+    position:fixed; right:28px; bottom:28px; z-index:150;
+    display:flex; flex-direction:column; gap:13px; align-items:center;
+    transition:opacity .35s var(--ease), transform .35s var(--ease);
+  }
+  .social-dock.is-hidden{ opacity:0; transform:translateY(10px); pointer-events:none; }
+  .social-dock a{
+    width:42px; height:42px; border-radius:50%;
+    border:1px solid var(--hairline); color:var(--text-2); background:var(--surface);
+    display:flex; align-items:center; justify-content:center;
+    transition:color .3s, border-color .3s, background .3s, transform .2s cubic-bezier(0,0,0,1.2);
+  }
+  .social-dock a:hover{ color:#fff; border-color:var(--accent-mauve); background:var(--accent-mauve); }
+  .social-dock a svg{ width:17px; height:17px; pointer-events:none; }
+  @media (max-width:860px){
+    .social-dock{ display:none; }
+  }
 
-        /* Text Overlay */
-        .g-text-overlay {
-            position: absolute;
-            bottom: 20px;
-            left: 20px;
-            right: 20px;
-            color: rgba(255, 255, 255, 0.95);
-            z-index: 2;
-            pointer-events: none;
-        }
+  /* THEME TOGGLE */
+  .theme-toggle{
+    width:42px; height:42px; border-radius:50%;
+    border:1px solid var(--hairline); color:var(--text-2); background:var(--surface);
+    display:flex; align-items:center; justify-content:center;
+    cursor:pointer; transition:color .3s, border-color .3s, background .3s, transform .2s cubic-bezier(0,0,0,1.2);
+  }
+  .theme-toggle:hover{ color:#fff; border-color:var(--accent-mauve); background:var(--accent-mauve); transform:translateY(-2px); }
+  .theme-toggle svg{ width:18px; height:18px; pointer-events:none; }
+  .theme-toggle .icon-moon{ display:none; }
+  html[data-theme="dark"] .theme-toggle .icon-sun{ display:none; }
+  html[data-theme="dark"] .theme-toggle .icon-moon{ display:block; }
 
-        .g-text-overlay h3, .g-text-overlay p {
-            margin: 0;
-            text-transform: uppercase;
-            font-weight: 500;
-            letter-spacing: 1px;
-            font-size: 0.9rem;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.8);
-        }
+  /* MOBILE TOPBAR - Uses CSS variables to automatically adapt to dark mode */
+  .topbar{
+    display:none; position:fixed; top:0; left:0; right:0; z-index:200;
+    background:var(--glass-2); backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--hairline-soft);
+    padding:12px 20px; align-items:center; justify-content:space-between;
+    transition:background .4s var(--ease), border-color .4s var(--ease);
+  }
+  .topbar .logo{ font-family:'Playfair Display', serif; font-style:italic; font-size:19px; cursor:pointer; color:var(--text-main); }
+  .topbar-right{ display:flex; align-items:center; gap:12px; }
+  .mobile-toggle{ width:36px; height:36px; border:1px solid var(--hairline-soft); background:transparent; }
+  .mobile-toggle:hover{ transform:none; }
+  .menu-btn{ display:flex; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:8px; }
+  .menu-btn span{ width:22px; height:2px; background:var(--text-main); display:block; border-radius:2px; }
+  @media (max-width:860px){ .topbar{ display:flex; } }
 
-        .g-tag {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            background: rgba(255, 255, 255, 0.25);
-            backdrop-filter: blur(5px);
-            padding: 5px 12px;
-            border-radius: 20px;
-            color: white;
-            font-size: 0.75rem;
-            display: none;
-        }
+  .drawer{
+    position:fixed; inset:0; z-index:199; background:var(--bg-0);
+    display:flex; flex-direction:column; align-items:center; justify-content:center; gap:26px;
+    opacity:0; pointer-events:none; transition:opacity .35s var(--ease), background .4s var(--ease);
+  }
+  .drawer.open{ opacity:1; pointer-events:all; }
+  .drawer a{ font-family:'Inter',sans-serif; font-size:14px; letter-spacing:.1em; text-transform:uppercase; color:var(--text-2); cursor:pointer; }
+  .drawer a:hover{ color:var(--accent-mauve); }
 
-        /* --- Active & Inactive States --- */
+  .shell{ padding-left:var(--rail-w); }
+  @media (max-width:860px){ .shell{ padding-left:0; padding-top:64px; } }
 
-        /* Center Card */
-        .gallery-card.active {
-            transform: translateX(0) scale(1.1) rotateY(0deg);
-            z-index: 10;
-            opacity: 1;
-            border: 1px solid rgba(255,255,255,0.2);
-        }
-        
-        /* Light Mode Active Border Override */
-        :not(.dark) .gallery-card.active {
-            border: 2px solid #C5A065;
-        }
+  /* REDUCED SECTION PADDING TO MINIMIZE GAPS */
+  section{ position:relative; padding:70px 0; }
+  @media (max-width:640px){ section{ padding:50px 0; } }
 
-        .gallery-card.active .g-tag {
-            display: inline-block;
-        }
+  .reveal{ opacity:0; transform:translateY(32px); transition:opacity .9s var(--ease), transform .9s var(--ease); }
+  .reveal.in{ opacity:1; transform:translateY(0); }
 
-        /* Neighbors */
-        .gallery-card.prev {
-            transform: translateX(-110%) scale(0.9) rotateY(15deg);
-            z-index: 5;
-            opacity: 0.5;
-            filter: brightness(0.6);
-        }
-        .gallery-card.next {
-            transform: translateX(110%) scale(0.9) rotateY(-15deg);
-            z-index: 5;
-            opacity: 0.5;
-            filter: brightness(0.6);
-        }
+  /* HERO */
+  .hero{ min-height:85svh; display:flex; flex-direction:column; justify-content:center; padding-top:80px; padding-bottom:40px; }
+  .hero-inner{ position:relative; }
+  .hero-eyebrow{ opacity:0; animation:fadeUp .9s var(--ease) .1s forwards; margin-bottom:18px; }
+  
+  .hero-big{
+    font-family:'Anton', sans-serif; font-weight:400;
+    font-size:clamp(44px, 15vw, 190px); line-height:0.86; letter-spacing:0.005em;
+    color:transparent; -webkit-text-stroke:1.4px var(--text-main);
+    position:relative; display:inline-block;
+    opacity:0; 
+    background-image:linear-gradient(100deg, transparent 30%, var(--accent-blush) 45%, var(--accent-blush) 55%, transparent 70%);
+    background-size:300% 100%; background-position:150% 0;
+    -webkit-background-clip:text; background-clip:text;
+    animation:fadeUp 1s var(--ease) .22s forwards, sweep 5s ease-in-out 1.4s infinite;
+  }
+  @keyframes sweep{ 0%{ background-position:150% 0; } 45%,100%{ background-position:-50% 0; } }
+  
+  .hero-name-row{
+    display:flex; align-items:baseline; gap:22px; flex-wrap:wrap; margin-top:8px;
+    opacity:0; animation:fadeUp 1s var(--ease) .42s forwards;
+  }
+  .hero-name{ font-family:'Playfair Display', serif; font-style:italic; font-weight:500; font-size:clamp(28px,4vw,42px); color:var(--text-main); }
+  .hero-role{ font-family:'JetBrains Mono', monospace; font-size:13px; letter-spacing:.1em; text-transform:uppercase; color:var(--text-2); }
+  .hero-role::before{ content:'— '; color:var(--accent-mauve); }
 
-        /* Far Neighbors */
-        .gallery-card.prev-2 {
-            transform: translateX(-220%) scale(0.8) rotateY(25deg);
-            z-index: 1;
-            opacity: 0.2;
-        }
-        .gallery-card.next-2 {
-            transform: translateX(220%) scale(0.8) rotateY(-25deg);
-            z-index: 1;
-            opacity: 0.2;
-        }
+  .hero-bottom{
+    display:flex; justify-content:space-between; align-items:flex-end; gap:30px; flex-wrap:wrap;
+    margin-top:40px; opacity:0; animation:fadeUp 1s var(--ease) .6s forwards;
+  }
+  .hero-desc{ max-width:400px; color:var(--text-1); font-size:14.5px; }
+  .hero-actions{ display:flex; align-items:center; gap:24px; flex-wrap:wrap; }
+  
+  .btn-solid{
+    font-family:'JetBrains Mono', monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase;
+    background:var(--accent-sage); color:#fff; padding:15px 28px; border-radius:4px; display:inline-block;
+    transition:transform .35s var(--ease), box-shadow .35s var(--ease), background .3s; cursor:pointer;
+  }
+  .btn-solid:hover{ transform:translateY(-2px); box-shadow:0 14px 24px -8px rgba(153, 155, 133, 0.5); background:var(--text-main); }
+  
+  .btn-line{
+    font-family:'JetBrains Mono', monospace; font-size:12px; letter-spacing:.06em; text-transform:uppercase;
+    color:var(--text-main); border-bottom:1px solid var(--text-3); padding-bottom:4px; display:inline-flex; align-items:center; gap:9px;
+    transition:color .3s, border-color .3s; cursor:pointer;
+  }
+  .btn-line:hover{ color:var(--accent-mauve); border-color:var(--accent-mauve); }
+  .btn-line svg{ transition:transform .3s var(--ease); }
+  .btn-line:hover svg{ transform:translate(4px, -4px); }
 
-        /* Controls */
-        .gallery-controls {
-            margin-top: 30px;
-            display: flex;
-            gap: 15px;
-        }
-        .gallery-controls button {
-            background: transparent;
-            border: 1px solid rgba(197, 160, 101, 0.5); 
-            color: #C5A065;
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 1.1rem;
-            transition: 0.3s;
-        }
-        .dark .gallery-controls button {
-            border-color: rgba(255,255,255,0.3);
-            color: white;
-        }
+  .scroll-cue{
+    position:absolute; right:0; bottom:-30px;
+    display:flex; flex-direction:column; align-items:center; gap:10px;
+    color:var(--text-3); font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:.15em;
+    opacity:0; animation:fadeUp 1s var(--ease) 1s forwards;
+  }
+  .scroll-cue .line{ width:1px; height:24px; background:linear-gradient(var(--text-main), transparent); animation:scrollLine 2.2s ease-in-out infinite; }
+  @keyframes scrollLine{ 0%{ transform:scaleY(0); transform-origin:top;} 50%{ transform:scaleY(1); transform-origin:top;} 51%{ transform-origin:bottom;} 100%{ transform:scaleY(0); transform-origin:bottom;} }
+  @keyframes fadeUp{ from{opacity:0; transform:translateY(22px);} to{opacity:1; transform:translateY(0);} }
 
-        .gallery-controls button:hover {
-            background: #C5A065;
-            color: white;
-            border-color: #C5A065;
-        }
+  .desk-line{ height:1px; width:100%; background:linear-gradient(90deg, transparent, var(--hairline) 12%, var(--hairline) 88%, transparent); position:relative; margin:20px 0; }
+  .desk-line::after{ content:''; position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); width:110px; height:1px; background:linear-gradient(90deg, transparent, var(--accent-mauve), transparent); opacity:.5; }
 
-        @media (max-width: 768px) {
-            .gallery-card {
-                width: 300px;
-                height: 200px;
-            }
-            .gallery-track {
-                height: 250px;
-            }
-        }
-    </style>
+  /* ABOUT */
+  .about-grid{ display:grid; grid-template-columns:1.05fr 0.95fr; gap:60px; align-items:center; }
+  @media (max-width:900px){ .about-grid{ grid-template-columns:1fr; gap:48px; } }
+  .about-copy h2{ font-family:'Anton', sans-serif; font-weight:400; font-size:clamp(30px,4.6vw,52px); letter-spacing:.01em; line-height:1.05; margin:12px 0 18px; color:var(--text-main); }
+  .about-copy p{ color:var(--text-1); font-size:15px; max-width:460px; margin-bottom:14px; }
+  .about-copy p strong{ color:var(--text-main); font-weight:600; }
+  .about-facts{ display:flex; gap:36px; margin-top:26px; flex-wrap:wrap; }
+  .about-facts .item b{ display:block; font-family:'Playfair Display', serif; font-style:italic; font-size:22px; color:var(--text-main); margin-bottom:4px; }
+  .about-facts .item{ font-size:11.5px; color:var(--text-2); font-family:'JetBrains Mono', monospace; letter-spacing:.04em; }
+
+  .about-avatar-stage{ position:relative; display:flex; justify-content:center; perspective:1200px; }
+  .about-glow{
+    position:absolute; bottom:6%; left:50%; transform:translateX(-50%); width:70%; height:110px;
+    background:radial-gradient(ellipse at center, rgba(145, 119, 130, 0.2), transparent 70%); filter:blur(20px);
+    animation:glowPulse 5s ease-in-out infinite;
+  }
+  @keyframes glowPulse{ 0%,100%{ opacity:.6; } 50%{ opacity:1; } }
+  .about-float{ animation:floatY 6.5s ease-in-out infinite; }
+  @keyframes floatY{ 0%,100%{ transform:translateY(0);} 50%{ transform:translateY(-14px);} }
+  
+  /* SKILLS MARQUEE */
+  .skills-head{ margin-bottom:30px; }
+  .skills-head h2{ font-family:'Anton', sans-serif; font-weight:400; font-size:clamp(28px,4vw,44px); margin-top:10px; color:var(--text-main); }
+  .marquee-row{ overflow:hidden; position:relative; padding:5px 0; -webkit-mask-image:linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-image:linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
+  .marquee-track{ display:flex; gap:18px; width:max-content; animation:scrollLeft 32s linear infinite; }
+  .marquee-row.slow .marquee-track{ animation-duration:44s; }
+  @keyframes scrollLeft{ from{ transform:translateX(0);} to{ transform:translateX(-50%);} }
+  .skill-pill{
+    flex:0 0 auto; padding:12px 24px; border-radius:50px;
+    border:1px solid var(--hairline); background:var(--surface);
+    display:flex; align-items:center; gap:12px;
+    transition:border-color .3s, transform .3s, background .3s;
+  }
+  .skill-pill:hover{ border-color:var(--accent-mauve); transform:translateY(-3px); background:var(--surface-2); }
+  .skill-pill svg{ width:20px; height:20px; color:var(--accent-mauve); transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); }
+  .skill-pill:hover svg { transform: scale(1.2) rotate(-8deg); }
+  .skill-pill span{ font-family:'JetBrains Mono', monospace; font-size:12px; letter-spacing:.06em; color:var(--text-main); text-transform:uppercase; font-weight:500; }
+
+  /* HOW I WORK - HORIZONTAL SINGLE SCREEN LAYOUT */
+  .hw-horizontal-grid {
+    display: grid;
+    grid-template-columns: 260px 180px repeat(4, 1fr);
+    gap: 16px;
+    align-items: center;
+    width: 100%;
+  }
+  @media (max-width: 1100px) {
+    .hw-horizontal-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  @media (max-width: 650px) {
+    .hw-horizontal-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .hw-col-title h2 {
+    font-family: 'Anton', sans-serif;
+    font-weight: 400;
+    font-size: clamp(26px, 3.2vw, 42px);
+    color: var(--text-main);
+    line-height: 1.05;
+    margin: 8px 0 0;
+  }
+
+  .hw-col-avatar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .hw-full-avatar-img {
+    width: 140px;
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 10px 20px rgba(75, 63, 56, 0.12));
+    animation: floatY 6s ease-in-out infinite;
+  }
+
+  .hw-cute-card {
+    background: var(--surface);
+    border: 1px solid var(--hairline);
+    border-radius: 16px;
+    padding: 20px 18px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    transition: transform 0.4s var(--ease), box-shadow 0.4s, border-color 0.4s;
+  }
+  .hw-cute-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--accent-mauve);
+    box-shadow: 0 15px 30px -10px rgba(75, 63, 56, 0.1);
+  }
+
+  .hw-step-num {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 12px;
+  }
+  .step-1 { background: var(--accent-mauve); }
+  .step-2 { background: var(--accent-blush); }
+  .step-3 { background: var(--accent-sage); }
+  .step-4 { background: var(--text-2); }
+
+  .hw-cute-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--text-main);
+    margin-bottom: 6px;
+  }
+  .hw-cute-card p {
+    font-size: 12px;
+    color: var(--text-1);
+    line-height: 1.45;
+  }
+
+  .hw-quote {
+    text-align: center;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 15px;
+    color: var(--text-2);
+    margin-top: 30px;
+    max-width: 600px;
+    margin-inline: auto;
+  }
+
+  /* PROJECTS */
+  .proj-section-head{ margin-bottom:40px; }
+  .proj-section-head h2{ font-family:'Anton', sans-serif; font-weight:400; font-size:clamp(30px,4.6vw,54px); margin-top:10px; color:var(--text-main); }
+  .stack-outer{ position:relative; max-width:940px; }
+  .stack-sticky{ position:sticky; padding:0 2px 40px; will-change:transform; }
+  .stack-sticky:nth-of-type(1){ top:0; z-index:10; }
+  .stack-sticky:nth-of-type(2){ top:24px; z-index:20; }
+  .stack-sticky:nth-of-type(3){ top:48px; z-index:30; }
+  .stack-sticky:nth-of-type(4){ top:72px; z-index:40; }
+  @media (max-width:860px){
+    .stack-sticky{ padding-bottom:24px; }
+    .stack-sticky:nth-of-type(1){ top:64px; }
+    .stack-sticky:nth-of-type(2){ top:88px; }
+    .stack-sticky:nth-of-type(3){ top:112px; }
+    .stack-sticky:nth-of-type(4){ top:136px; }
+  }
+
+  .stack-card{
+    background:linear-gradient(160deg, var(--surface), var(--surface-2));
+    border:1px solid var(--hairline); border-radius:22px;
+    display:grid; grid-template-columns:1.05fr 0.95fr; align-items:center;
+    overflow:hidden; box-shadow: 0 20px 40px -15px rgba(75, 63, 56, 0.08);
+    min-height:42vh; max-height:420px; transition:border-color .4s;
+  }
+  .stack-card:hover{ border-color:var(--accent-mauve); }
+  @media (max-width:860px){ .stack-card{ grid-template-columns:1fr; min-height:0; max-height:none; } }
+
+  .stack-left{ padding:40px 36px; }
+  @media (max-width:640px){ .stack-left{ padding:28px 20px; } }
+  .stack-tag{ font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:var(--accent-sage); font-weight:600; }
+  .stack-left h3{ font-family:'Playfair Display', serif; font-weight:500; font-size:clamp(22px,2.8vw,32px); line-height:1.18; color:var(--text-main); margin:12px 0 10px; max-width:400px; }
+  .stack-left p{ color:var(--text-1); font-size:14px; max-width:380px; margin-bottom:16px; }
+  .stack-chip-row{ display:flex; flex-wrap:wrap; gap:8px; margin-bottom:18px; }
+  .stack-chip{ font-size:11px; color:var(--text-2); border:1px solid var(--hairline); padding:5px 10px; border-radius:20px; background:var(--surface); }
+  
+  .stack-link{ 
+    font-family:'JetBrains Mono', monospace; font-size:11.5px; letter-spacing:.06em; color:var(--accent-mauve); 
+    display:inline-flex; align-items:center; gap:9px; border-bottom:1px solid var(--accent-mauve); 
+    padding-bottom:4px; transition:border-color .3s, color .3s; cursor:pointer; font-weight:500; 
+  }
+  .stack-link:hover{ border-color:var(--text-main); color:var(--text-main); }
+  .stack-link svg { transition: transform 0.3s var(--ease); }
+  .stack-link:hover svg { transform: translateX(3px) translateY(-3px); }
+
+  .stack-media{
+    position:relative; height:100%; min-height:220px;
+    background:var(--bg-1);
+    display:flex; align-items:center; justify-content:center;
+    overflow: hidden;
+  }
+  
+  .stack-media img.project-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+    opacity: 0.9;
+    transition: transform 0.5s var(--ease), opacity 0.5s var(--ease);
+  }
+  .stack-card:hover .stack-media img.project-img {
+    transform: scale(1.05);
+    opacity: 1;
+  }
+  
+  .stack-media span.placeholder-text{ position:relative; z-index:2; font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--text-3); text-align:center; padding:0 20px; }
+  .stack-num{ position:absolute; top:20px; right:22px; z-index:5; font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:.08em; color:var(--text-3); font-weight:500; }
+
+  /* TIMELINE */
+  .two-col{ display:grid; grid-template-columns:0.85fr 1.15fr; gap:60px; }
+  @media (max-width:920px){ .two-col{ grid-template-columns:1fr; gap:40px; } }
+  .col-label{ position:sticky; top:100px; align-self:start; z-index:2; background:var(--bg-0); padding-bottom:14px; }
+  .col-label h2{ font-family:'Anton', sans-serif; font-weight:400; font-size:clamp(26px,4vw,40px); margin-top:10px; color:var(--text-main); }
+  .col-label p{ color:var(--text-1); font-size:14px; margin-top:12px; max-width:300px; }
+  @media (max-width:920px){ .col-label{ position:static; background:none; padding-bottom:0; } }
+
+  .timeline{ position:relative; max-width:740px; }
+  .timeline-track{ position:absolute; left:9px; top:6px; bottom:6px; width:1px; background:var(--hairline-soft); }
+  .timeline-track-fill{ position:absolute; left:0; top:0; width:1px; height:0%; background:linear-gradient(var(--accent-mauve), var(--accent-blush)); transition:height .3s linear; }
+  .tl-entry{ position:relative; padding:0 0 40px 44px; opacity:0; transform:translateY(22px); transition:opacity .7s var(--ease), transform .7s var(--ease); }
+  .tl-entry:last-child{ padding-bottom:0; }
+  .tl-entry.in{ opacity:1; transform:translateY(0); }
+  .tl-dot{ position:absolute; left:0; top:4px; width:19px; height:19px; border-radius:50%; background:var(--surface); border:1px solid var(--hairline); display:flex; align-items:center; justify-content:center; transition:border-color .5s; }
+  .tl-dot::before { content:''; position:absolute; inset:-5px; border-radius:50%; border:1px solid var(--accent-mauve); opacity:0; transform:scale(0.5); transition:all .5s var(--ease); pointer-events:none; }
+  .tl-dot::after{ content:''; width:7px; height:7px; border-radius:50%; background:var(--hairline); transition:background .5s; position:relative; z-index:2; }
+  .tl-entry.in .tl-dot{ border-color:var(--accent-mauve); }
+  .tl-entry.in .tl-dot::before { animation: dotRipple 2s cubic-bezier(0.16, 0.84, 0.44, 1) infinite 0.5s; }
+  @keyframes dotRipple { 0% { transform:scale(0.8); opacity:0.6; } 100% { transform:scale(2.2); opacity:0; } }
+  .tl-entry.in .tl-dot::after{ background:var(--accent-mauve); }
+  .tl-period{ font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:.08em; color:var(--text-2); margin-bottom:6px; text-transform:uppercase; font-weight:500; }
+  .tl-entry h3{ font-family:'Playfair Display', serif; font-weight:500; font-size:20px; color:var(--text-main); margin-bottom:4px; }
+  .tl-org{ font-size:13px; color:var(--accent-sage); margin-bottom:10px; font-weight:500; }
+  .tl-entry ul{ list-style:none; display:flex; flex-direction:column; gap:6px; }
+  .tl-entry li{ font-size:14px; color:var(--text-1); padding-left:16px; position:relative; }
+  .tl-entry li::before{ content:'—'; position:absolute; left:0; color:var(--accent-mauve); }
+  
+  .edu-grid{ display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:4px; }
+  @media (max-width:640px){ .edu-grid{ grid-template-columns:1fr; } }
+  .edu-card{ border:1px solid var(--hairline); border-radius:8px; padding:16px 18px; background:var(--surface); }
+  .edu-card .grade{ font-family:'JetBrains Mono', monospace; font-size:12px; color:var(--text-main); margin-top:8px; font-weight:600; }
+
+  /* GALLERY */
+  .gcar{ position:relative; overflow:hidden; }
+  .gcar-stage{ position:relative; height:400px; display:flex; align-items:center; justify-content:center; perspective:1400px; overflow:hidden; }
+  @media (max-width:640px){ .gcar-stage{ height:280px; } }
+  .gcar-card{
+    position:absolute; top:50%; left:50%; width:180px; height:240px;
+    border-radius:18px; overflow:hidden; border:1px solid var(--hairline);
+    background:linear-gradient(160deg, var(--surface), var(--surface-2));
+    box-shadow: none;
+    display:flex; flex-direction:column; justify-content:flex-end; padding:16px; cursor:pointer;
+    transition:transform .6s var(--ease), opacity .6s var(--ease), box-shadow .6s var(--ease), border-color .4s;
+  }
+  .gcar-card.is-center{ border-color:var(--accent-mauve); box-shadow: none; }
+  @media (max-width:640px){ .gcar-card{ width:130px; height:180px; padding:12px; border-radius:14px; } }
+  
+  .gcar-img-wrap {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    overflow: hidden;
+  }
+  .gcar-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.85;
+    transition: transform 0.5s var(--ease);
+  }
+  .gcar-card:hover .gcar-img-wrap img {
+    transform: scale(1.05);
+  }
+
+  .gcar-card::after{ content:''; position:absolute; inset:0; z-index: 2; background:linear-gradient(180deg, transparent 35%, var(--surface-2) 95%); }
+  .gcar-cat{ position:relative; z-index:3; font-family:'JetBrains Mono', monospace; font-size:9.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--text-2); font-weight:600; }
+  .gcar-card h4{ position:relative; z-index:3; font-family:'Playfair Display', serif; font-style:italic; font-weight:500; font-size:16px; margin-top:4px; color:var(--text-main); }
+  .gcar-badge{
+    position:absolute; top:12px; right:12px; z-index:3; width:26px; height:26px; border-radius:50%;
+    border:none; background:var(--accent-mauve);
+    display:flex; align-items:center; justify-content:center; color:#fff; opacity:0; transition:opacity .4s var(--ease);
+  }
+  .gcar-card.is-center .gcar-badge{ opacity:1; }
+
+  .gcar-controls{ display:flex; align-items:center; justify-content:center; gap:20px; margin-top:30px; }
+  .gcar-dots{ display:flex; align-items:center; gap:7px; }
+  .gcar-dot{ width:6px; height:6px; border-radius:50%; background:var(--hairline); transition:all .4s var(--ease); cursor:pointer; }
+  .gcar-dot.active{ width:20px; border-radius:4px; background:var(--accent-mauve); }
+  .gcar-next{
+    width:42px; height:42px; border-radius:50%; border:1px solid var(--hairline); background:var(--surface);
+    display:flex; align-items:center; justify-content:center; color:var(--text-main); cursor:pointer;
+    transition:all .3s var(--ease); flex-shrink:0;
+  }
+  .gcar-next:hover{ border-color:var(--accent-mauve); color:var(--accent-mauve); transform:scale(1.06); }
+
+  /* FOOTER */
+  footer{ padding:70px 0 30px; border-top:1px solid var(--hairline); background:var(--bg-1); position:relative; transition:background .4s var(--ease); }
+  .contact-inner{ display:flex; justify-content:space-between; align-items:flex-end; gap:36px; flex-wrap:wrap; }
+  footer h2{ font-family:'Anton', sans-serif; font-weight:400; font-size:clamp(32px,6vw,60px); max-width:640px; color:var(--text-main); line-height:1.02; }
+  .contact-links{ display:flex; flex-direction:column; gap:12px; align-items:flex-start; }
+  .contact-email{ font-family:'JetBrains Mono', monospace; font-size:15px; color:var(--text-main); font-weight:500; border-bottom:1px solid var(--text-main); padding-bottom:4px; transition:color .3s, border-color .3s; }
+  .contact-email:hover{ color:var(--accent-mauve); border-color:var(--accent-mauve); }
+  .socials{ display:flex; gap:20px; margin-top:4px; }
+  .socials a{ font-size:12px; letter-spacing:.04em; color:var(--text-2); transition:color .3s; font-weight:500; }
+  .socials a:hover{ color:var(--accent-mauve); }
+  
+  .footer-bottom{ margin-top:50px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:18px; font-family:'JetBrains Mono', monospace; font-size:11px; color:var(--text-3); }
+  .footer-avatar{ display:flex; align-items:center; gap:14px; }
+  .footer-avatar img{
+    width:100px; filter: drop-shadow(0 8px 14px rgba(145, 119, 130, 0.2));
+    animation:wave 4.5s ease-in-out infinite;
+    transform-origin:70% 90%;
+  }
+  @keyframes wave{
+    0%,100%{ transform:rotate(0deg); }
+    5%{ transform:rotate(-4deg); }
+    10%{ transform:rotate(3deg); }
+    15%{ transform:rotate(-3deg); }
+    20%{ transform:rotate(0deg); }
+  }
+  .to-top{ width:40px; height:40px; border-radius:50%; border:1px solid var(--hairline); background:var(--surface); display:flex; align-items:center; justify-content:center; color:var(--text-2); transition:all .3s; cursor:pointer; }
+  .to-top:hover{ border-color:var(--accent-mauve); color:var(--accent-mauve); transform:translateY(-3px); }
+
+  :focus-visible{ outline:2px solid var(--accent-mauve); outline-offset:3px; }
+
+  /* DARK MODE — override hardcoded light-palette shadows/glows */
+  html[data-theme="dark"] .bg-fixed{
+    background:
+      radial-gradient(1000px 640px at 88% -6%, rgba(198,168,120,0.07), transparent 60%),
+      radial-gradient(800px 560px at -4% 108%, rgba(198,168,120,0.05), transparent 60%);
+  }
+  html[data-theme="dark"] .rail-item .tip{ box-shadow:0 10px 24px -8px rgba(0,0,0,0.5); }
+  html[data-theme="dark"] .hw-full-avatar-img{ filter: drop-shadow(0 10px 20px rgba(0,0,0,0.4)); }
+  html[data-theme="dark"] .hw-cute-card:hover{ box-shadow: 0 15px 30px -10px rgba(0,0,0,0.4); }
+  html[data-theme="dark"] .stack-card{ box-shadow: 0 20px 40px -15px rgba(0,0,0,0.35); }
+  html[data-theme="dark"] .gcar-card{ box-shadow: none; }
+  html[data-theme="dark"] .gcar-card.is-center{ box-shadow: none; }
+  html[data-theme="dark"] .about-glow{ background:radial-gradient(ellipse at center, rgba(198,168,120,0.15), transparent 70%); }
+  html[data-theme="dark"] .btn-solid:hover{ box-shadow:0 14px 24px -8px rgba(0,0,0,0.5); }
+  html[data-theme="dark"] .footer-avatar img{ filter: drop-shadow(0 8px 14px rgba(198,168,120,0.18)); }
+
+  /* --- NEW: IMAGE THEME TOGGLE CLASSES --- */
+  .theme-img-dark { display: none !important; }
+  .theme-img-light { display: block; }
+  
+  html[data-theme="dark"] .theme-img-light { display: none !important; }
+  html[data-theme="dark"] .theme-img-dark { display: block !important; }
+</style>
 </head>
-<body class="font-sans antialiased selection:bg-gold selection:text-noir-base overflow-x-hidden text-slate-900 dark:text-text-main bg-slate-50 dark:bg-noir-base transition-colors duration-500">
-      
-    <div class="fixed inset-0 z-[-1]">
-        
-        <div class="absolute inset-0 bg-gradient-to-br from-slate-100 to-white dark:opacity-0 transition-opacity duration-500"></div>
+<body>
 
-        <div class="absolute inset-0 bg-gradient-to-r from-black via-[#0a0a0a] to-[#121212] opacity-0 dark:opacity-100 transition-opacity duration-500"></div>
-        
-        <div class="absolute inset-0 opacity-[0.03] pointer-events-none" style="background-image: url('https://grainy-gradients.vercel.app/noise.svg');"></div>
+<div class="bg-fixed"></div>
+<div class="bg-grain"></div>
 
-        <div class="star-container opacity-50">
-            <div class="star w-[2px] h-[2px]" style="left: 10%; animation-duration: 7s; animation-delay: 0s;"></div>
-            <div class="star w-[3px] h-[3px]" style="left: 20%; animation-duration: 10s; animation-delay: 2s;"></div>
-            <div class="star w-[2px] h-[2px]" style="left: 50%; animation-duration: 6s; animation-delay: 3s;"></div>
-            <div class="star w-[3px] h-[3px]" style="left: 80%; animation-duration: 12s; animation-delay: 1s;"></div>
-            <div class="star w-[2px] h-[2px]" style="left: 35%; animation-duration: 9s; animation-delay: 5s;"></div>
-            <div class="star w-[3px] h-[3px]" style="left: 65%; animation-duration: 11s; animation-delay: 4s;"></div>
-            <div class="star w-[2px] h-[2px]" style="left: 90%; animation-duration: 8s; animation-delay: 6s;"></div>
-        </div>
-    </div>
+<!-- brand wordmark -->
+<div onclick="window.scrollTo({top:0, behavior:'smooth'})" class="brand-mark">SARA<span>.</span></div>
 
-<nav class="fixed top-4 left-1/2 -translate-x-1/2 w-[95%] max-w-5xl z-50 transition-all duration-300">
-        
-        <div class="rounded-full apple-nav shadow-glass px-6 py-2 flex items-center justify-between relative z-50 bg-white/80 dark:bg-[#121212]/80 backdrop-blur-md border border-gold/20">
-            <!---Hero/Navbar-->
-            <a href="#" class="font-serif text-lg font-bold tracking-widest text-slate-900 dark:text-white transition-colors">
-                SARA<span class="text-gold">.</span>
-            </a>
-
-            <div class="hidden md:flex items-center space-x-8 text-[10px] font-bold text-slate-500 dark:text-text-muted tracking-[0.2em] uppercase">
-                <a href="#about" class="hover:text-gold transition-colors">Profile</a>
-                <a href="#skills" class="hover:text-gold transition-colors">Skills</a>
-                <a href="#projects" class="hover:text-gold transition-colors">Designs</a>
-                <a href="#experience" class="hover:text-gold transition-colors">Experience</a>
-            </div>
-
-            <div class="flex items-center gap-4">
-                
-                <button id="theme-toggle" class="group relative inline-flex items-center justify-center p-1.5 rounded-full border border-gold/30 hover:bg-gold transition-all duration-300 w-8 h-8">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 hidden dark:block text-gold group-hover:text-white transition-colors">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" />
-                    </svg>
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 block dark:hidden text-gold group-hover:text-white transition-colors">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" />
-                    </svg>
-                </button>
-                
-                <button id="mobile-menu-btn" class="md:hidden text-slate-900 dark:text-white hover:text-gold transition-colors focus:outline-none">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-                    </svg>
-                </button>
-            </div>
-        </div>
-
-        <div id="mobile-menu" class="absolute top-full left-0 w-full mt-2 rounded-2xl glass-card border border-gold/20 overflow-hidden transition-all duration-300 ease-in-out opacity-0 -translate-y-5 pointer-events-none md:hidden bg-white/90 dark:bg-[#121212]/95 backdrop-blur-xl">
-            <div class="flex flex-col p-6 space-y-4 text-center">
-                <a href="#about" class="mobile-link text-sm font-bold uppercase tracking-widest text-slate-600 dark:text-slate-300 hover:text-gold transition-colors">Profile</a>
-                <a href="#skills" class="mobile-link text-sm font-bold uppercase tracking-widest text-slate-600 dark:text-slate-300 hover:text-gold transition-colors">Skills</a>
-                <a href="#projects" class="mobile-link text-sm font-bold uppercase tracking-widest text-slate-600 dark:text-slate-300 hover:text-gold transition-colors">Designs</a>
-                <a href="#experience" class="mobile-link text-sm font-bold uppercase tracking-widest text-slate-600 dark:text-slate-300 hover:text-gold transition-colors">Experience</a>
-                <a href="#contact" class="mobile-link text-xs font-bold uppercase tracking-widest text-gold border border-gold/30 rounded-full py-2 hover:bg-gold hover:text-white transition-all">Let's Talk</a>
-            </div>
-        </div>
+<!-- vertical icon nav -->
+<div class="rail-shell" id="railShell">
+  <aside class="rail">
+    <nav class="rail-nav">
+      <a href="#top" class="rail-item active" aria-label="Home">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 11.5L12 4l8 7.5"/><path d="M6 10v9h12v-9"/></svg>
+        <span class="tip">Home</span>
+      </a>
+      <a href="#about" class="rail-item" aria-label="About">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="8" r="3.4"/><path d="M5 20c1.2-4 4-6 7-6s5.8 2 7 6"/></svg>
+        <span class="tip">About</span>
+      </a>
+      <a href="#projects" class="rail-item" aria-label="Projects">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3.5" y="5" width="17" height="12" rx="1.5"/><path d="M8 20h8"/></svg>
+        <span class="tip">Work</span>
+      </a>
+      <a href="#experience" class="rail-item" aria-label="Experience">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3.5" y="7.5" width="17" height="12" rx="1.5"/><path d="M8.5 7.5V5.5a1.5 1.5 0 011.5-1.5h4a1.5 1.5 0 011.5 1.5v2M3.5 12.5h17"/></svg>
+        <span class="tip">Experience</span>
+      </a>
     </nav>
-
-<!---About-->
-    <section id="about" class="min-h-screen flex flex-col md:flex-row items-center justify-center px-6 pt-28 max-w-6xl mx-auto gap-12 md:gap-20">
-        
-        <div class="order-1 md:order-2 relative w-full max-w-md flex justify-center">
-            
-           <div class="relative w-72 h-72 md:w-96 md:h-96"
-     style="-webkit-mask-image: radial-gradient(circle at center, black 50%, transparent 70%);
-            mask-image: radial-gradient(circle at center, black 50%, transparent 70%);">
-    
-    <img src="images/profile light.png" 
-         alt="Sara Imtiyaz Light" 
-         class="w-full h-full object-cover opacity-90 block dark:hidden hover:scale-105 transition-transform duration-700">
-
-    <img src="images/profile dark.png" 
-         alt="Sara Imtiyaz Dark" 
-         class="w-full h-full object-cover opacity-90 hidden dark:block hover:scale-105 transition-transform duration-700">
+  </aside>
 </div>
-            
-           <div class="absolute -bottom-0 -right-4 glass-card px-6 py-3 rounded-xl !border-l-4 !border-gold z-10 animate-pulse shadow-gold-glow">
-                <p class="text-[10px] uppercase tracking-widest text-slate-500 dark:text-text-muted">Specialty</p>
-                <p class="text-sm font-bold text-slate-900 dark:text-white">UI/UX & Web Design</p>
-            </div>
+
+<!-- social dock -->
+<div class="social-dock">
+  <button class="theme-toggle" id="themeToggleDesk" type="button" aria-label="Toggle dark mode">
+    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.4M12 19.1v2.4M4.2 4.2l1.7 1.7M18.1 18.1l1.7 1.7M2.5 12h2.4M19.1 12h2.4M4.2 19.8l1.7-1.7M18.1 5.9l1.7-1.7"/></svg>
+    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 14.5a8.5 8.5 0 01-11-11 8.5 8.5 0 1011 11z"/></svg>
+  </button>
+  <a href="https://www.linkedin.com/in/sara-imtiyaz" target="_blank" rel="noopener" aria-label="LinkedIn">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2.5"/><path d="M7.5 10v6.5M7.5 7.2v.1M11.5 16.5V10M11.5 12.8c0-1.8 1.2-2.8 2.7-2.8 1.6 0 2.8 1 2.8 2.8v3.7"/></svg>
+  </a>
+  <a href="https://github.com/saraimtiyaz22" target="_blank" rel="noopener" aria-label="GitHub">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2a10 10 0 00-3.16 19.5c.5.1.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.9-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.99 1.03-2.69-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.6 9.6 0 015 0c1.91-1.3 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.6 1.03 2.69 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0012 2z"/></svg>
+  </a>
+  <a href="https://www.behance.net/saraimtiyaz" target="_blank" rel="noopener" aria-label="Behance">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 7h6.5a2.6 2.6 0 010 5.2H3zM3 12.2h7a2.8 2.8 0 010 5.6H3z"/><path d="M15.5 13.2a3.2 3.2 0 016.3-.6c.05.3.07.6.05 1.1h-6.35a2.6 2.6 0 002.7 2.5c.9 0 1.55-.3 2.1-.95l1.35.9a4.2 4.2 0 01-3.5 1.7 4 4 0 01-4.15-4.1c0-.2 0-.4.03-.55z"/><path d="M16.5 9.5h5"/></svg>
+  </a>
+</div>
+
+<!-- mobile top bar -->
+<div class="topbar">
+  <div onclick="window.scrollTo({top:0, behavior:'smooth'})" class="logo">Sara.</div>
+  <div class="topbar-right">
+    <button class="theme-toggle mobile-toggle" type="button" aria-label="Toggle dark mode">
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.4M12 19.1v2.4M4.2 4.2l1.7 1.7M18.1 18.1l1.7 1.7M2.5 12h2.4M19.1 12h2.4M4.2 19.8l1.7-1.7M18.1 5.9l1.7-1.7"/></svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 14.5a8.5 8.5 0 01-11-11 8.5 8.5 0 1011 11z"/></svg>
+    </button>
+    <button class="menu-btn" id="menuBtn" aria-label="Open menu"><span></span><span></span></button>
+  </div>
+</div>
+<div class="drawer" id="drawer">
+  <a onclick="closeDrawer();" href="#top">Home</a>
+  <a onclick="closeDrawer();" href="#about">About</a>
+  <a onclick="closeDrawer();" href="#skills">Skills</a>
+  <a onclick="closeDrawer();" href="#process">Process</a>
+  <a onclick="closeDrawer();" href="#projects">Work</a>
+  <a onclick="closeDrawer();" href="#experience">Experience</a>
+  <a onclick="closeDrawer();" href="#gallery">Gallery</a>
+  <a onclick="closeDrawer();" href="#contact">Contact</a>
+</div>
+
+<div class="shell">
+<main id="mainPortfolioView">
+
+  <!-- ================= HERO ================= -->
+  <section class="hero" id="top">
+    <!-- Decorative Coffee Mug SVG -->
+    <svg class="deco-svg" style="top: 15%; right: 8%; width: 34px; height: 34px;" viewBox="0 0 24 24" fill="none" stroke="var(--accent-mauve)" stroke-width="1.5"><path d="M18 8h1a4 4 0 010 8h-1M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8zM6 1v3M10 1v3M14 1v3"/></svg>
+    <!-- Decorative Sparkle SVG -->
+    <svg class="deco-svg delay-1" style="bottom: 22%; left: 10%; width: 28px; height: 28px;" viewBox="0 0 24 24" fill="none" stroke="var(--text-2)" stroke-width="1.5"><path d="M12 2v20M2 12h20M4.93 4.93l14.14 14.14M4.93 19.07L19.07 4.93"/></svg>
+
+    <div class="wrap hero-inner">
+      <div class="hero-eyebrow eyebrow on-dark">UI/UX &amp; Product Designer — Portfolio 2026</div>
+      <h1 class="hero-big">PORTFOLIO</h1>
+      <div class="hero-name-row">
+        <span class="hero-name">Sara Imtiyaz</span>
+        <span class="hero-role">UI/UX Designer</span>
+      </div>
+
+      <div class="hero-bottom">
+        <p class="hero-desc">Aspiring UI/UX Designer transitioning from a Healthcare Product Operations background — building interfaces that feel effortless to use.</p>
+        <div class="hero-actions">
+          <a href="https://1drv.ms/w/c/460ae894ea665ffd/IQCrU4og3uI2QJT7PWbd5MqTAQwVihvPC53p5BwOcuW-lLA?e=hXJgH1" target="_blank" rel="noopener" class="btn-solid">View Résumé</a>
+          <a href="#projects" class="btn-line">Selected work
+            <svg width="14" height="10" viewBox="0 0 14 10" fill="none"><path d="M1 5H13M13 5L9 1M13 5L9 9" stroke="currentColor" stroke-width="1.2"/></svg>
+          </a>
         </div>
-
-        <div class="order-2 md:order-1 text-center md:text-left max-w-xl">
-            <p class="text-gold text-xs font-bold tracking-[0.3em] uppercase mb-4 animate-pulse">Designing Experiences</p>
-            <h1 class="font-serif text-5xl lg:text-7xl text-slate-900 dark:text-white mb-6 leading-tight">
-                Sara <span class="text-gold-gradient italic">Imtiyaz</span>
-            </h1>
-            
-            <p class="text-slate-600 dark:text-text-muted text-lg font-light leading-relaxed mb-8">
-                Aspiring UI/UX Designer transitioning from software engineering. I combine my <strong class="text-slate-900 dark:text-white">technical background</strong> with a passion for <strong class="text-slate-900 dark:text-white">visual aesthetics</strong> to create intuitive, beautiful digital interfaces.
-            </p>
-            
-            <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-                <a href="https://1drv.ms/w/c/460ae894ea665ffd/IQCrU4og3uI2QJT7PWbd5MqTAQwVihvPC53p5BwOcuW-lLA?e=hXJgH1" class="px-8 py-3 bg-gold text-noir-base font-bold tracking-widest text-xs uppercase hover:bg-slate-900 hover:text-white dark:hover:bg-white dark:hover:text-black transition-all duration-300 rounded shadow-gold-glow">
-                    RESUME
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!---Skills-->
-    <section id="skills" class="py-12 px-6 bg-white dark:bg-noir-surface border-y border-slate-200 dark:border-white/5 transition-colors duration-500">
-        <div class="max-w-6xl mx-auto">
-            <div class="text-center mb-10">
-                <span class="text-gold text-xs tracking-[0.2em] uppercase">Technical Arsenal</span>
-                <h2 class="font-serif text-3xl text-slate-900 dark:text-white mt-2">Tools & Expertise</h2>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="glass-card p-6 rounded-xl">
-                    <h3 class="text-slate-900 dark:text-white font-serif mb-4 flex items-center gap-2">
-                        <svg class="w-5 h-5 text-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"></path></svg>
-                        UX Design
-                    </h3>
-                    <div class="space-y-4">
-                        <div>
-                            <div class="flex justify-between mb-1 text-xs text-slate-500 dark:text-text-muted"><span>UI/UX Principles</span> <span class="text-gold">Intermediate</span></div>
-                            <div class="h-1 bg-slate-200 dark:bg-white/10 rounded-full"><div class="h-full bg-gold w-[60%]"></div></div>
-                        </div>
-                        <div class="flex flex-wrap gap-2 mt-4">
-                            <span class="px-2 py-1 bg-slate-100 dark:bg-noir-base rounded text-[10px] border border-slate-200 dark:border-white/10 text-slate-700 dark:text-gray-300">Figma</span>
-                            <span class="px-2 py-1 bg-slate-100 dark:bg-noir-base rounded text-[10px] border border-slate-200 dark:border-white/10 text-slate-700 dark:text-gray-300">Wireframing</span>
-                            <span class="px-2 py-1 bg-slate-100 dark:bg-noir-base rounded text-[10px] border border-slate-200 dark:border-white/10 text-slate-700 dark:text-gray-300">Prototyping</span>
-                            <span class="px-2 py-1 bg-slate-100 dark:bg-noir-base rounded text-[10px] border border-slate-200 dark:border-white/10 text-slate-700 dark:text-gray-300">User Research</span>
-
-
-                        </div>
-                    </div>
-                </div>
-
-                <div class="glass-card p-6 rounded-xl">
-                    <h3 class="text-slate-900 dark:text-white font-serif mb-4 flex items-center gap-2">
-                        <svg class="w-5 h-5 text-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
-                        Frontend
-                    </h3>
-                    <div class="space-y-4">
-                        <div>
-                            <div class="flex justify-between mb-1 text-xs text-slate-500 dark:text-text-muted"><span>HTML/CSS/Bootstrap</span> <span class="text-gold">Intermediate</span></div>
-                            <div class="h-1 bg-slate-200 dark:bg-white/10 rounded-full"><div class="h-full bg-gold w-[75%]"></div></div>
-                        </div>
-                        <div class="flex flex-wrap gap-2 mt-4">
-                            <span class="px-2 py-1 bg-slate-100 dark:bg-noir-base rounded text-[10px] border border-slate-200 dark:border-white/10 text-slate-700 dark:text-gray-300">Responsive Design</span>
-                            <span class="px-2 py-1 bg-slate-100 dark:bg-noir-base rounded text-[10px] border border-slate-200 dark:border-white/10 text-slate-700 dark:text-gray-300">VS Code</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="glass-card p-6 rounded-xl">
-                    <h3 class="text-slate-900 dark:text-white font-serif mb-4 flex items-center gap-2">
-                        <svg class="w-5 h-5 text-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"></path></svg>
-                        Backend
-                    </h3>
-                    <div class="space-y-4">
-                        <div>
-                            <div class="flex justify-between mb-1 text-xs text-slate-500 dark:text-text-muted"><span>Python & Java</span> <span class="text-slate-400 dark:text-white/40">Basic Foundation</span></div>
-                            <div class="h-1 bg-slate-200 dark:bg-white/10 rounded-full"><div class="h-full bg-gold w-[40%]"></div></div>
-                        </div>
-                        <div class="flex flex-wrap gap-2 mt-4">
-                            <span class="px-2 py-1 bg-slate-100 dark:bg-noir-base rounded text-[10px] border border-slate-200 dark:border-white/10 text-slate-700 dark:text-gray-300">SQL</span>
-                            <span class="px-2 py-1 bg-slate-100 dark:bg-noir-base rounded text-[10px] border border-slate-200 dark:border-white/10 text-slate-700 dark:text-gray-300">Logic Building</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!---Project-->
-   <section id="projects" class="py-20 px-6 bg-slate-50 dark:bg-noir-base transition-colors duration-500">
-        <div class="max-w-6xl mx-auto">
-            
-            <div class="text-center mb-16">
-                <span class="text-gold text-xs tracking-[0.2em] uppercase">My Works</span>
-                <h2 class="font-serif text-3xl text-slate-900 dark:text-white mt-2">UI/UX Designs</h2>
-                <div class="h-[1px] w-24 bg-gold/50 mx-auto mt-4"></div> </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!--project card 1-->
-                <div class="glass-card rounded-2xl overflow-hidden group">
-                    <div class="h-48 overflow-hidden relative">
-                        <img src="images/Cover.png" class="w-full h-full object-cover opacity-90 dark:opacity-80 group-hover:scale-110 transition-transform duration-700">
-                        <div class="absolute inset-0 bg-black/10 dark:bg-noir-base/20 group-hover:bg-transparent transition-colors"></div>
-                    </div>
-                    <div class="p-8">
-                        <div class="flex justify-between items-center mb-4">
-                            <h3 class="font-serif text-xl text-slate-900 dark:text-white group-hover:text-gold transition-colors">Beyond Self-Service</h3>
-                            <span class="text-[10px] border border-slate-300 dark:border-white/20 px-2 py-1 rounded text-slate-500 dark:text-white/50">Case Study</span>
-                        </div>
-                        <p class="text-slate-600 dark:text-text-muted text-sm leading-relaxed mb-6">
-                            Designed an accessible OPD registration experience focused on reducing friction and improving usability for low-digital-literacy users.                        </p>
-                        <a href="https://www.behance.net/gallery/251549981/Beyond-Self-Service"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="text-xs font-bold uppercase tracking-widest text-slate-900 dark:text-white hover:text-gold dark:hover:text-gold transition-colors flex items-center gap-2">                            View Case Study <span class="text-gold">&rarr;</span>
-                        </a>
-                    </div>
-                </div>
-                <!--project card 2-->
-                <div class="glass-card rounded-2xl overflow-hidden group">
-                    <div class="h-48 overflow-hidden relative">
-                        <img src="images/HMFA.png" class="w-full h-full object-cover opacity-90 dark:opacity-80 group-hover:scale-110 transition-transform duration-700">
-                        <div class="absolute inset-0 bg-black/10 dark:bg-noir-base/20 group-hover:bg-transparent transition-colors"></div>
-                    </div>
-                    <div class="p-8">
-                        <div class="flex justify-between items-center mb-4">
-                            <h3 class="font-serif text-xl text-slate-900 dark:text-white group-hover:text-gold transition-colors">College Website UI/UX Redesign</h3>
-                            <span class="text-[10px] border border-slate-300 dark:border-white/20 px-2 py-1 rounded text-slate-500 dark:text-white/50">Case Study</span>
-                        </div>
-                        <p class="text-slate-600 dark:text-text-muted text-sm leading-relaxed mb-6">
-                            A UI/UX case study redesigning my college website to enhance clarity, navigation, and overall user experience through a modern, student-focused interface.
-                        </p>
-                        <a href="https://www.behance.net/gallery/241674947/College-Website-Redesign-UIUX-Case-Study" 
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="text-xs font-bold uppercase tracking-widest text-slate-900 dark:text-white hover:text-gold dark:hover:text-gold transition-colors flex items-center gap-2">
-                            View Design <span class="text-gold">&rarr;</span>
-                        </a>
-                    </div>
-                </div>
-                <!--project card 3-->
-                <div class="glass-card rounded-2xl overflow-hidden group">
-                    <div class="h-48 overflow-hidden relative">
-                        <img src="images/ReelRead.Ai.png" class="w-full h-full object-cover opacity-90 dark:opacity-80 group-hover:scale-110 transition-transform duration-700">
-                        <div class="absolute inset-0 bg-black/10 dark:bg-noir-base/20 group-hover:bg-transparent transition-colors"></div>
-                    </div>
-                    <div class="p-8">
-                        <div class="flex justify-between items-center mb-4">
-                            <h3 class="font-serif text-xl text-slate-900 dark:text-white group-hover:text-gold transition-colors">ReelRead.Ai</h3>
-                            <span class="text-[10px] border border-slate-300 dark:border-white/20 px-2 py-1 rounded text-slate-500 dark:text-white/50">Website UI</span>
-                        </div>
-                        <p class="text-slate-600 dark:text-text-muted text-sm leading-relaxed mb-6">
-Designed a desktop-first AI product interface that converts books into video content.
-Focused on building a clear end-to-end UX flow with emphasis on usability, scalability, and product thinking.
-                        </p>
-                        <a href="https://www.figma.com/community/file/1591891462041908674/reelreed-ai"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                         class="text-xs font-bold uppercase tracking-widest text-slate-900 dark:text-white hover:text-gold dark:hover:text-gold transition-colors flex items-center gap-2">
-                            View Design <span class="text-gold">&rarr;</span>
-                        </a>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- Experience Section -->
-    <section id="experience" class="py-20 px-6 bg-white dark:bg-noir-surface transition-colors duration-500">
-        <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12">
-            
-            <div>
-                <h3 class="font-serif text-2xl text-slate-900 dark:text-white mb-8 flex items-center gap-3">
-                    <span class="w-2 h-2 bg-gold rounded-full"></span> Experience
-                </h3>
-                
-                <div class="border-l border-slate-300 dark:border-white/10 pl-8 relative space-y-12">
-                    <div class="relative">
-                        <div class="absolute -left-[37px] top-1 w-4 h-4 rounded-full bg-slate-50 dark:bg-noir-base border-2 border-gold"></div>
-                        <h4 class="text-xl text-slate-900 dark:text-white font-serif">Product Operations & Implementation Associate (Contractual)</h4>
-                        <p class="text-gold text-xs uppercase tracking-widest mt-1 mb-4">Driefcase Health Tech | Nov 2022 - Mar 2025</p>
-                        <ul class="text-slate-600 dark:text-text-muted text-sm leading-relaxed space-y-2 list-disc pl-4">
-                            <li>Supported HMIS implementation across government and private hospitals in Uttar Pradesh.</li>
-                            <li>Conducted field observation to identify usability and workflow challenges faced by doctors, staff, and patients.</li>
-                            <li>Collaborated with product teams by translating user pain points into workflow and product improvement suggestions.</li>
-                            <li>Trained 200+ doctors and hospital staff, improving system adoption and reducing operational friction.</li>
-                            <li>Managed and coordinated 20+ field interns during hospital onboarding and deployment activities. </li>
-
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <!-- Education Section -->
-            <div>
-                <h3 class="font-serif text-2xl text-slate-900 dark:text-white mb-8 flex items-center gap-3">
-                    <span class="w-2 h-2 bg-slate-300 dark:bg-white/50 rounded-full"></span> Education
-                </h3>
-                
-                <div class="border-l border-slate-300 dark:border-white/10 pl-8 relative space-y-12">
-                    <div class="relative">
-                        <div class="absolute -left-[37px] top-1 w-4 h-4 rounded-full bg-slate-50 dark:bg-noir-base border-2 border-slate-400 dark:border-white/50"></div>
-                        <h4 class="text-xl text-slate-900 dark:text-white font-serif">B.Tech, Computer Science</h4>
-                        <p class="text-slate-500 dark:text-white/50 text-xs uppercase tracking-widest mt-1 mb-2">HMFA Memorial Institute | 2017 - 2021</p>
-                        <p class="text-gold text-sm font-bold">CGPA: 7.4/10</p>
-                    </div>
-
-                    <div class="relative">
-                        <div class="absolute -left-[37px] top-1 w-4 h-4 rounded-full bg-slate-50 dark:bg-noir-base border-2 border-slate-400 dark:border-white/50"></div>
-                        <h4 class="text-xl text-slate-900 dark:text-white font-serif">Intermediate (12th)</h4>
-                        <p class="text-slate-500 dark:text-white/50 text-xs uppercase tracking-widest mt-1 mb-2">National Inter College | 2014 - 2016</p>
-                        <p class="text-gold text-sm font-bold">Percentage: 72.4%</p>
-                    </div>
-                    
-                    <div class="glass-card p-6 rounded-xl border border-gold/20 mt-6">
-                        <h5 class="text-gold text-xs uppercase tracking-widest mb-3">Certifications</h5>
-                        <ul class="text-slate-700 dark:text-white text-sm space-y-1">
-                            <li>• Programming in Java (NIIT)</li>
-                            <li>• National Cadet Corps (Govt. of India)</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </section>
-    
-    <!-- Gallery Section -->
-
-    <section class="gallery-3d-section relative w-full pt-10 pb-32 h-auto overflow-hidden flex flex-col items-center bg-slate-50 dark:bg-noir-base transition-colors duration-500">
-    
-        <div class="relative z-50 container mx-auto px-4 mb-8 text-center">
-            
-            <span class="text-gold text-xs tracking-[0.2em] uppercase font-semibold">
-                My Works
-            </span>
-            
-            <h2 class="font-serif text-4xl text-slate-900 dark:text-white mt-2 drop-shadow-lg">
-                Gallery
-            </h2>
-            <div class="h-[1px] w-24 bg-yellow-500/50 mx-auto mt-4"></div>
-        </div>
-
-        <div class="gallery-container mx-auto mt-24 relative z-0">
-            <div class="gallery-track" id="galleryTrack">
-               <!--1-->
-               <a href="https://www.figma.com/proto/850hrlMwNuNH7fx5OEcijO/Untitled?node-id=2-87&starting-point-node-id=2%3A87" target="_blank" class="gallery-card active">
-                <div class="g-image-wrapper">
-                    <img src="images/strawberry.png" alt="fruit">
-                </div>
-                <div class="g-text-overlay">
-                    <h3>AURUM</h3>
-                </div>
-            </a>
-
-                <!--2-->
-                <a href="https://www.behance.net/gallery/241187845/SONIQ" target="_blank" class="gallery-card active">
-                <div class="g-image-wrapper">
-                    <img src="images/Soniq.png" alt="Jewelry">
-                </div>
-                <div class="g-text-overlay">
-                    <h3>SONIQ</h3>
-                </div>
-            </a>
-                <!--3-->
-
-                        <a href="https://www.figma.com/community/file/1591891462041908674/reelreed-ai" target="_blank" class="gallery-card active">
-                <div class="g-image-wrapper">
-                    <img src="images/ReelRead.ai.png" alt="Ai">
-                </div>
-                <div class="g-text-overlay">
-                    <h3>ReelRead.Ai</h3>
-                </div>
-            </a>
-                <!--4-->
-                        <a href="https://www.behance.net/gallery/241674947/College-Website-Redesign-UIUX-Case-Study" target="_blank" class="gallery-card active">
-                <div class="g-image-wrapper">
-                    <img src="images/HMFA.png" alt="College">
-                </div>
-                <div class="g-text-overlay">
-                    <h3>HMFA</h3>
-                </div>
-            </a>
-                <!--5-->
-                        <a href="https://www.behance.net/gallery/241187295/HOURZ-Luxury-Watch-Landing-Page" target="_blank" class="gallery-card active">
-                <div class="g-image-wrapper">
-                    <img src="images/Hourz.png" alt="watch">
-                </div>
-                <div class="g-text-overlay">
-                    <h3>HOURZ</h3>
-                </div>
-            </a>
-                
-                <!--6-->
-             <a href="https://www.behance.net/gallery/239336701/Minimalist-Interior-Landing-Page-Design" target="_blank" class="gallery-card active">
-                <div class="g-image-wrapper">
-                    <img src="images/yana.png" alt="interior">
-                </div>
-                <div class="g-text-overlay">
-                    <h3>Luxe</h3>
-                </div>
-            </a>
-             <!--7-->
-            <a href="https://lume-studio-by-sara.vercel.app//" target="_blank" class="gallery-card active">
-                <div class="g-image-wrapper">
-                    <img src="images/Lume.png" alt="Makeup">
-                </div>
-                <div class="g-text-overlay">
-                    <h3>Lume</h3>
-                </div>
-            </a>
-            <!--8-->
-                <a href="https://www.behance.net/gallery/241188453/FLORA" target="_blank" class="gallery-card active">
-                <div class="g-image-wrapper">
-                    <img src="images/Flora.png" alt="flora">
-                </div>
-                <div class="g-text-overlay">
-                    <h3>FLORA</h3>
-                </div>
-            </a>
-           
-            
-            <!--9-->            
-                 <a href="https://www.behance.net/gallery/241188153/Healthcare-App-UI-redesign" target="_blank" class="gallery-card active">
-                <div class="g-image-wrapper">
-                    <img src="images/driefcase.png" alt="health">
-                </div>
-                <div class="g-text-overlay">
-                    <h3>Healthcare App UI Redesign</h3>
-                </div>
-            </a>
-
-            </div>
-
-            <div class="gallery-controls">
-                <button id="gPrevBtn">&larr;</button>
-                <button id="gNextBtn">&rarr;</button>
-            </div>
-        </div>
-    </section>
-
-    <div class="fixed bottom-8 right-6 md:right-10 z-50 flex flex-col items-center gap-4 animate-[fadeIn_1s_ease-in-out]">
-        
-        <div class="h-20 w-[1px] bg-gradient-to-b from-transparent to-gold/50"></div>
-
-        <div class="flex flex-col gap-4">
-            
-            <a href="https://www.linkedin.com/in/sara-imtiyaz" target="_blank" 
-               class="group flex items-center justify-center w-8 h-8 rounded-full border border-gold/30 bg-noir-base/20 backdrop-blur-sm text-gold/70 transition-all duration-300 hover:border-gold hover:text-gold hover:shadow-[0_0_15px_rgba(197,160,101,0.3)] hover:-translate-y-1">
-                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                    <path fill-rule="evenodd" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" clip-rule="evenodd" />
-                </svg>
-            </a>
-
-            <a href="https://github.com/saraimtiyaz22" target="_blank" 
-               class="group flex items-center justify-center w-8 h-8 rounded-full border border-gold/30 bg-noir-base/20 backdrop-blur-sm text-gold/70 transition-all duration-300 hover:border-gold hover:text-gold hover:shadow-[0_0_15px_rgba(197,160,101,0.3)] hover:-translate-y-1">
-                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                    <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd" />
-                </svg>
-            </a>
-
-            <a href="https://www.behance.net/saraimtiyaz" target="_blank" 
-               class="group flex items-center justify-center w-8 h-8 rounded-full border border-gold/30 bg-noir-base/20 backdrop-blur-sm text-gold/70 transition-all duration-300 hover:border-gold hover:text-gold hover:shadow-[0_0_15px_rgba(197,160,101,0.3)] hover:-translate-y-1">
-                 <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                    <path fill-rule="evenodd" d="M22 13.5c0 3.32-2.39 5.5-5.55 5.5-3.3 0-5.45-2.35-5.45-5.48 0-3.35 2.3-5.52 5.6-5.52 2.5 0 4.25 1.45 4.8 3.55h-2.1c-.2-.85-.95-1.55-2.6-1.55-1.8 0-2.95 1.3-2.95 3.5 0 2.2 1.05 3.5 3.05 3.5 1.45 0 2.35-.65 2.65-1.9H22zM19.1 12.2h-5.2c.1-1.3 1-2.15 2.55-2.15 1.45 0 2.25.7 2.65 2.15zM7.15 8h2.65c2.3 0 3.75 1.35 3.75 3.1 0 1.25-.65 2.05-1.55 2.45 1.15.35 2.05 1.2 2.05 2.65 0 1.95-1.7 3.3-4.3 3.3H6.5c-.3 0-.5-.2-.5-.5V8.5c0-.3.2-.5.5-.5h.65zm2.45 3.85c1.1 0 1.7-.55 1.7-1.45 0-.95-.65-1.45-1.75-1.45H8.6v2.9h1zm.25 4.15c1.15 0 1.9-.6 1.9-1.55 0-1.05-.75-1.6-1.9-1.6H8.6v3.15h1.25zM15 6.5h5v-1.5h-5v1.5z" clip-rule="evenodd"/>
-                </svg>
-            </a>
-        </div>
-        
-        <div class="h-16 w-[1px] bg-gradient-to-t from-transparent to-gold/50"></div>
-
+      </div>
     </div>
-    
-    <footer id="contact" class="py-12 bg-slate-50 dark:bg-noir-base border-t border-slate-200 dark:border-white/5 text-center transition-colors duration-500">
-        <h2 class="font-serif text-2xl text-slate-900 dark:text-white mb-6">Let's build something <span class="italic text-gold">beautiful.</span></h2>
-        <div class="flex justify-center gap-6 mb-8 text-sm text-slate-500 dark:text-text-muted">
-            <a href="mailto:saraimtiyaz23@gmail.com" class="hover:text-gold transition font-serif flex items-center gap-2">
-                saraimtiyaz23@gmail.com
-            </a>
-            <span>|</span>
-            <a href="tel:+919935090685" class="hover:text-gold transition  flex items-center gap-2">
-                +91 9935090685
-            </a>
+    <div class="wrap"><div class="scroll-cue"><span>SCROLL</span><span class="line"></span></div></div>
+  </section>
+
+  <div class="wrap"><div class="desk-line"></div></div>
+
+  <!-- ================= ABOUT ================= -->
+  <section id="about" style="position: relative;">
+    <!-- Decorative Plant Leaf SVG -->
+    <svg class="deco-svg delay-2" style="top: 12%; left: 6%; width: 36px; height: 36px;" viewBox="0 0 24 24" fill="none" stroke="var(--accent-sage)" stroke-width="1.5"><path d="M12 2c0 10-4 14-10 16 2-6 6-10 16-16zM12 2v20"/></svg>
+    <!-- Decorative Cat Outline SVG -->
+    <svg class="deco-svg" style="bottom: 8%; right: 4%; width: 32px; height: 32px;" viewBox="0 0 24 24" fill="none" stroke="var(--accent-mauve)" stroke-width="1.5"><path d="M4 10l3-5 3 2M20 10l-3-5-3 2M12 21c-4.5 0-8-3.5-8-8v-3a8 8 0 0116 0v3c0 4.5-3.5 8-8 8z"/></svg>
+
+    <div class="wrap about-grid">
+      <div class="about-copy reveal">
+        <div class="eyebrow on-dark">Profile</div>
+        <h2>A little<br>about me.</h2>
+        <p>I'm a Prayagraj-based UI/UX designer with <strong>2.5 years</strong> in healthcare product operations — time spent watching real people struggle with real interfaces, which is exactly what pulled me toward design.</p>
+        <p>Today I'm channeling that field experience into <strong>research-driven, human-centered</strong> product design — currently sharpening that practice through a structured design program at <strong>Zetheta Algorithms</strong>.</p>
+        <div class="about-facts">
+          <div class="item"><b>Prayagraj, IN</b>BASED &amp; OPEN-TO-RELOCATE</div>
+          <div class="item"><b>Zetheta</b>CURRENT PROGRAM</div>
+          <div class="item"><b>2.5 yrs</b>PRODUCT OPS</div>
         </div>
+      </div>
+
+      <div class="about-avatar-stage reveal">
+        <div class="about-glow"></div>
+        <div class="about-float">
+          <!-- Light & Dark Images here -->
+          <img src="img/about.png" alt="Illustrated avatar of Sara Imtiyaz working at her laptop" class="about-img theme-img-light">
+          <img src="img/about-dark.png" alt="Illustrated avatar of Sara Imtiyaz working at her laptop" class="about-img theme-img-dark">
+        </div>
+      </div>
+    </div>
+  </section>
+
+    <div class="wrap"><div class="desk-line"></div></div>
+
+  <!-- ================= SKILLS ================= -->
+  <section id="skills">
+    <div class="wrap skills-head reveal">
+      <div class="eyebrow on-dark">Technical Arsenal</div>
+      <h2>Tools &amp; UX competencies</h2>
+    </div>
+
+    <div class="marquee-row">
+      <div class="marquee-track" id="track1">
+        <div class="skill-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M8 3h5a4 4 0 010 8H8z"/><path d="M8 11h5a4 4 0 010 8H8z"/><circle cx="8" cy="15" r="4"/></svg><span>Figma</span></div>
+        <div class="skill-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 19V9l8-5 8 5v10"/><path d="M9 19v-6h6v6"/></svg><span>UX Research</span></div>
+        <div class="skill-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 20V10M4 10l4-6h8l4 6M4 10h16M8 20v-6h8v6"/></svg><span>Information Architecture</span></div>
+        <div class="skill-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M4 9h16M9 9v11"/></svg><span>Interactive Prototyping</span></div>
+        <div class="skill-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/><circle cx="12" cy="12" r="3.4"/></svg><span>Usability Testing</span></div>
+        <div class="skill-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 2v4M12 2h-4M12 2h4M6 8v10a2 2 0 002 2h8a2 2 0 002-2V8"/></svg><span>Design Systems</span></div>
+        <div class="skill-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="4" width="18" height="13" rx="1.5"/><path d="M8 21h8M12 17v4"/></svg><span>Framer</span></div>
+        <div class="skill-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 3l8 4v6c0 5-3.5 7.5-8 8-4.5-.5-8-3-8-8V7z"/></svg><span>Webflow</span></div>
+        <div class="skill-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 5h16v11H9l-5 4V5z"/></svg><span>ChatGPT</span></div>
+        <div class="skill-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 3v18M4.5 7.5l15 9M19.5 7.5l-15 9"/></svg><span>Claude</span></div>
+        <div class="skill-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 8l4 4-4 4M20 8l-4 4 4 4M8 12h8"/></svg><span>Stitch</span></div>
+        <div class="skill-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 20l10-10"/><path d="M16 4l1 2 2 1-2 1-1 2-1-2-2-1 2-1z"/></svg><span>Figma AI</span></div>
         
-        <div class="flex justify-center gap-6 mb-8 opacity-60 text-slate-900 dark:text-white">
-            <a href="https://github.com/saraimtiyaz22" class="hover:text-gold hover:scale-110 transition-transform">GitHub</a>
-            <a href="https://www.behance.net/saraimtiyaz" class="hover:text-gold hover:scale-110 transition-transform">Behance</a>
-            <a href="https://www.linkedin.com/in/sara-imtiyaz" class="hover:text-gold hover:scale-110 transition-transform">LinkedIn</a>
+        <!-- duplicate for infinite loop -->
+        <div class="skill-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M8 3h5a4 4 0 010 8H8z"/><path d="M8 11h5a4 4 0 010 8H8z"/><circle cx="8" cy="15" r="4"/></svg><span>Figma</span></div>
+        <div class="skill-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 19V9l8-5 8 5v10"/><path d="M9 19v-6h6v6"/></svg><span>UX Research</span></div>
+        <div class="skill-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 20V10M4 10l4-6h8l4 6M4 10h16M8 20v-6h8v6"/></svg><span>Information Architecture</span></div>
+        <div class="skill-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M4 9h16M9 9v11"/></svg><span>Interactive Prototyping</span></div>
+        <div class="skill-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/><circle cx="12" cy="12" r="3.4"/></svg><span>Usability Testing</span></div>
+        <div class="skill-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 2v4M12 2h-4M12 2h4M6 8v10a2 2 0 002 2h8a2 2 0 002-2V8"/></svg><span>Design Systems</span></div>
+        <div class="skill-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="4" width="18" height="13" rx="1.5"/><path d="M8 21h8M12 17v4"/></svg><span>Framer</span></div>
+        <div class="skill-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 3l8 4v6c0 5-3.5 7.5-8 8-4.5-.5-8-3-8-8V7z"/></svg><span>Webflow</span></div>
+        <div class="skill-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 5h16v11H9l-5 4V5z"/></svg><span>ChatGPT</span></div>
+        <div class="skill-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 3v18M4.5 7.5l15 9M19.5 7.5l-15 9"/></svg><span>Claude</span></div>
+        <div class="skill-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 8l4 4-4 4M20 8l-4 4 4 4M8 12h8"/></svg><span>Stitch</span></div>
+        <div class="skill-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 20l10-10"/><path d="M16 4l1 2 2 1-2 1-1 2-1-2-2-1 2-1z"/></svg><span>Figma AI</span></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap"><div class="desk-line"></div></div>
+
+  <!-- ================= HOW I WORK ================= -->
+  <section id="process" style="position: relative;">
+    <!-- Decorative Pen Tool / Nodes SVG -->
+    <svg class="deco-svg" style="top: 10%; right: 5%; width: 30px; height: 30px;" viewBox="0 0 24 24" fill="none" stroke="var(--accent-mauve)" stroke-width="1.5"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18z"/><circle cx="12" cy="12" r="2"/></svg>
+
+    <div class="wrap">
+      <div class="hw-horizontal-grid reveal">
+        
+        <!-- Column 1: Title Text -->
+        <div class="hw-col-title">
+          <div class="eyebrow on-dark">How I Work</div>
+          <h2>Simple.<br>Thoughtful.<br>User-first.</h2>
         </div>
 
-        <p class="text-[10px] uppercase tracking-widest text-slate-400 dark:text-text-muted/30">© 2026 Sara Imtiyaz.</p>
-    </footer>
+        <!-- Column 2: Full Avatar -->
+        <div class="hw-col-avatar">
+          <!-- Light & Dark Images here -->
+          <img src="img/thinking.png" alt="Sara Imtiyaz" class="hw-full-avatar-img theme-img-light">
+          <img src="img/thinking-dark.png" alt="Sara Imtiyaz" class="hw-full-avatar-img theme-img-dark">
+        </div>
 
-    <script>
-        // 1. Theme Toggle Logic
-        const themeToggleBtn = document.getElementById('theme-toggle');
-        const htmlElement = document.documentElement;
+        <!-- Column 3, 4, 5, 6: The 4 Process Cards -->
+        <div class="hw-cute-card">
+          <div class="hw-step-num step-1">1</div>
+          <h3>Listen</h3>
+          <p>Every project starts by understanding people, goals, and the problem before thinking about solutions.</p>
+        </div>
 
-        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-            htmlElement.classList.add('dark');
+        <div class="hw-cute-card">
+          <div class="hw-step-num step-2">2</div>
+          <h3>Simplify</h3>
+          <p>Break down complex ideas into clear, intuitive user experiences that feel effortless.</p>
+        </div>
+
+        <div class="hw-cute-card">
+          <div class="hw-step-num step-3">3</div>
+          <h3>Create</h3>
+          <p>Design clean, accessible, and consistent interfaces with attention to every detail.</p>
+        </div>
+
+        <div class="hw-cute-card">
+          <div class="hw-step-num step-4">4</div>
+          <h3>Improve</h3>
+          <p>Gather feedback, iterate continuously, and refine the experience until it feels right.</p>
+        </div>
+
+      </div>
+
+      <div class="hw-quote reveal">
+        "Good design isn't about adding more. It's about making every interaction feel effortless."
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap"><div class="desk-line"></div></div>
+
+  <!-- ================= PROJECTS ================= -->
+  <section id="projects" style="position: relative;">
+    <!-- Decorative Game Controller SVG -->
+    <svg class="deco-svg delay-1" style="top: 8%; left: 1%; width: 34px; height: 34px;" viewBox="0 0 24 24" fill="none" stroke="var(--accent-sage)" stroke-width="1.5"><rect x="2" y="6" width="20" height="12" rx="4"/><path d="M6 12h4m-2-2v4M15 11h.01M18 13h.01"/></svg>
+
+    <div class="wrap">
+      <div class="proj-section-head reveal">
+        <div class="eyebrow on-dark">Selected Work</div>
+        <h2>Problems I've solved.</h2>
+      </div>
+
+      <div class="stack-outer">
+        <!-- Project 1: RiskLens -->
+        <div class="stack-sticky">
+          <article class="stack-card">
+            <div class="stack-media">
+              <span class="stack-num">01</span>
+              <!-- Light & Dark Images here -->
+              <img src="img/pro1.png" alt="RiskLens Project Image" class="project-img theme-img-light">
+              <img src="img/risklens.png" alt="RiskLens Project Image" class="project-img theme-img-dark">
+              <span class="placeholder-text" style="display:none;">RiskLens Adaptive Dashboard</span>
+            </div>
+            <div class="stack-left">
+              <span class="stack-tag">01 / Case Study · FinTech &amp; Design System</span>
+              <h3>RiskLens: Adaptive Dashboard &amp; Design System</h3>
+              <p>An enterprise risk intelligence dashboard built with an accessible, high-contrast design system and automated risk-scoring UI components.</p>
+              <div class="stack-chip-row">
+                <span class="stack-chip">Design System</span>
+                <span class="stack-chip">Dashboard UI</span>
+                <span class="stack-chip">Accessibility</span>
+              </div>
+              
+              <a href="https://www.behance.net/gallery/252993243/RiskLens-Adaptive-Dashboard-Design-System" target="_blank" rel="noopener" class="stack-link">View Case Study
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+              </a>
+            </div>
+          </article>
+        </div>
+
+        <!-- Project 2: FinLeap -->
+        <div class="stack-sticky">
+          <article class="stack-card">
+            <div class="stack-media">
+              <span class="stack-num">02</span>
+              <!-- Light & Dark Images here -->
+              <img src="img/pro2.png" alt="FinLeap Project Image" class="project-img theme-img-light">
+              <img src="img/finleap.png" alt="FinLeap Project Image" class="project-img theme-img-dark">
+              <span class="placeholder-text" style="display:none;">FinLeap Gamified Onboarding</span>
+            </div>
+            <div class="stack-left">
+              <span class="stack-tag">02 / Case Study · EdTech &amp; FinTech</span>
+              <h3>FinLeap: Gamified Financial Onboarding</h3>
+              <p>A personalized onboarding flow that turns investing and personal finance into interactive challenges with XP, streaks, and gamified progress tracking.</p>
+              <div class="stack-chip-row">
+                <span class="stack-chip">Gamification</span>
+                <span class="stack-chip">User Onboarding</span>
+                <span class="stack-chip">UX Research</span>
+              </div>
+
+              <a href="https://www.behance.net/gallery/253909795/FinLeap" target="_blank" rel="noopener" class="stack-link">View Case Study
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+              </a>
+            </div>
+          </article>
+        </div>
+
+        <!-- Project 3: Beyond Self-Service -->
+        <div class="stack-sticky">
+          <article class="stack-card">
+            <div class="stack-media">
+              <span class="stack-num">03</span>
+              <!-- Light & Dark Images here -->
+              <img src="img/pro3.png" alt="Beyond Self-Service Project Image" class="project-img theme-img-light">
+              <img src="img/opd.png" alt="Beyond Self-Service Project Image" class="project-img theme-img-dark">
+              <span class="placeholder-text" style="display:none;">Beyond Self-Service</span>
+            </div>
+            <div class="stack-left">
+              <span class="stack-tag">03 / Case Study · Healthcare</span>
+              <h3>Turned OPD registration into an experience anyone could use.</h3>
+              <p>An accessible registration flow redesigned around patients with low digital literacy — from field research to a working prototype.</p>
+              <div class="stack-chip-row">
+                <span class="stack-chip">Product Strategy</span>
+                <span class="stack-chip">UX Research</span>
+                <span class="stack-chip">Discovery Flow</span>
+              </div>
+
+              <a href="https://www.behance.net/gallery/251549981/Beyond-Self-Service" target="_blank" rel="noopener" class="stack-link">View Case Study
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+              </a>
+            </div>
+          </article>
+        </div>
+
+      </div>
+
+      <div style="height:8vh;"></div>
+    </div>
+  </section>
+
+  <!-- ================= EXPERIENCE ================= -->
+  <section id="experience">
+    <div class="wrap">
+      <div class="two-col">
+        <div class="col-label reveal">
+          <div class="eyebrow on-dark">Timeline</div>
+          <h2>Experience &amp; education</h2>
+          <p>From hospital-floor product operations to a structured design practice.</p>
+        </div>
+
+        <div>
+          <div class="timeline" id="timeline">
+            <div class="timeline-track"><div class="timeline-track-fill" id="tlFill"></div></div>
+
+            <div class="tl-entry" id="tl0">
+              <div class="tl-dot"></div>
+              <div class="tl-period">Jul 2026 — Present</div>
+              <h3>UX Lead / Lead UI Designer — Design Sprints</h3>
+              <div class="tl-org">Zetheta Algorithms Pvt. Ltd. · Structured Work-Experience Program</div>
+              <ul>
+                <li>Leading end-to-end UX/UI design sprints as part of a structured remote program.</li>
+                <li>Delivered full design system suites and adaptive dashboards including IA reports, accessibility audits, and developer handoffs.</li>
+                <li>Producing comprehensive multi-deliverable UX case studies for gamified and financial literacy applications.</li>
+              </ul>
+            </div>
+
+            <div class="tl-entry" id="tl1">
+              <div class="tl-dot"></div>
+              <div class="tl-period">Nov 2022 — Mar 2025</div>
+              <h3>Product Operations &amp; Implementation Associate</h3>
+              <div class="tl-org">Driefcase Health Tech · Contractual</div>
+              <ul>
+                <li>Supported HMIS implementation across government and private hospitals in Uttar Pradesh.</li>
+                <li>Conducted field observation to identify usability and workflow challenges for doctors, staff, and patients.</li>
+                <li>Translated user pain points into workflow and product improvement suggestions.</li>
+                <li>Trained 200+ doctors and hospital staff, improving system adoption.</li>
+              </ul>
+            </div>
+
+            <div class="tl-entry" id="tl2">
+              <div class="tl-dot"></div>
+              <div class="tl-period">2017 — 2021</div>
+              <h3>B.Tech, Computer Science</h3>
+              <div class="tl-org">HMFA Memorial Institute</div>
+              <div class="edu-grid">
+                <div class="edu-card">
+                  <div class="stack-tag">Degree</div>
+                  <div style="font-size:14px;color:var(--text-1); margin-top:8px;">B.Tech, Computer Science</div>
+                  <div class="grade">CGPA 7.4 / 10</div>
+                </div>
+                <div class="edu-card">
+                  <div class="stack-tag">Intermediate</div>
+                  <div style="font-size:14px;color:var(--text-1); margin-top:8px;">National Inter College, 2014–16</div>
+                  <div class="grade">72.4%</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= GALLERY ================= -->
+  <section id="gallery">
+    <div class="wrap">
+      <div class="proj-section-head reveal">
+        <div class="eyebrow on-dark">More Works</div>
+        <h2>Gallery</h2>
+      </div>
+
+      <div class="gcar reveal" id="galleryCarousel">
+        <div class="gcar-stage" id="gcarStage"></div>
+        <div class="gcar-controls">
+          <div class="gcar-dots" id="gcarDots"></div>
+          <button class="gcar-next" id="gcarNext" aria-label="Next">
+            <svg width="15" height="11" viewBox="0 0 14 10" fill="none"><path d="M1 5H13M13 5L9 1M13 5L9 9" stroke="currentColor" stroke-width="1.3"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer id="contact">
+  <!-- Decorative Sparkle in Footer -->
+  <svg class="deco-svg delay-2" style="top: 18%; right: 10%; width: 26px; height: 26px;" viewBox="0 0 24 24" fill="none" stroke="var(--accent-mauve)" stroke-width="1.5"><path d="M12 2v20M2 12h20M4.93 4.93l14.14 14.14M4.93 19.07L19.07 4.93"/></svg>
+
+  <div class="wrap">
+    <div class="contact-inner reveal">
+      <h2>Let's build<br>something great.</h2>
+      <div class="contact-links">
+        <a href="mailto:saraimtiyaz23@gmail.com" class="contact-email">saraimtiyaz23@gmail.com</a>
+        <div class="socials">
+          <a href="https://github.com/saraimtiyaz22" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://www.behance.net/saraimtiyaz" target="_blank" rel="noopener">Behance</a>
+          <a href="https://www.linkedin.com/in/sara-imtiyaz" target="_blank" rel="noopener">LinkedIn</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-avatar">
+        <!-- Light & Dark Images here -->
+        <img src="img/bye.png" alt="Sara Imtiyaz avatar" class="theme-img-light">
+        <img src="img/bye-dark.png" alt="Sara Imtiyaz avatar" class="theme-img-dark">
+        <span>© 2026 Sara Imtiyaz — designed &amp; built with care.</span>
+      </div>
+      <div onclick="window.scrollTo({top:0, behavior:'smooth'})" class="to-top" aria-label="Back to top">↑</div>
+    </div>
+  </div>
+</footer>
+
+</div><!-- /shell -->
+
+<script>
+  function closeDrawer() {
+    var drawer = document.getElementById('drawer');
+    if(drawer) drawer.classList.remove('open');
+  }
+
+  (function(){
+    /* mobile drawer */
+    var menuBtn = document.getElementById('menuBtn');
+    var drawer = document.getElementById('drawer');
+    if(menuBtn){
+      menuBtn.addEventListener('click', function(){ drawer.classList.toggle('open'); });
+    }
+
+    /* active rail item on scroll */
+    var railItems = document.querySelectorAll('.rail-item');
+    var sectionIds = ['top','about','projects','experience'];
+    var sections = sectionIds.map(function(id){ return document.getElementById(id); }).filter(Boolean);
+    function updateActive(){
+      var y = window.scrollY + window.innerHeight * 0.35;
+      var current = sections[0];
+      sections.forEach(function(s){ if(s.offsetTop <= y) current = s; });
+      railItems.forEach(function(it){
+        it.classList.toggle('active', it.getAttribute('href') === '#' + current.id);
+      });
+    }
+    window.addEventListener('scroll', updateActive, { passive:true });
+    updateActive();
+
+    /* scroll reveal */
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){ if(en.isIntersecting) en.target.classList.add('in'); });
+    }, { threshold:0.16, rootMargin:'0px 0px -60px 0px' });
+    document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+
+    /* timeline entries reveal */
+    var tlIO = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){ if(en.isIntersecting) en.target.classList.add('in'); });
+    }, { threshold:0.3, rootMargin:'0px 0px -40px 0px' });
+    document.querySelectorAll('.tl-entry').forEach(function(el){ tlIO.observe(el); });
+
+    /* hide floating social dock near the footer */
+    var socialDock = document.querySelector('.social-dock');
+    var footerEl = document.getElementById('contact');
+    if(socialDock && footerEl){
+      var dockIO = new IntersectionObserver(function(entries){
+        entries.forEach(function(en){
+          socialDock.classList.toggle('is-hidden', en.isIntersecting);
+        });
+      }, { threshold:0, rootMargin:'0px 0px -60px 0px' });
+      dockIO.observe(footerEl);
+    }
+
+    /* magnetic social dock icons (Micro-interaction) */
+    var magnets = document.querySelectorAll('.social-dock a');
+    magnets.forEach(function(magnet) {
+      magnet.addEventListener('mousemove', function(e) {
+        var rect = magnet.getBoundingClientRect();
+        var x = (e.clientX - rect.left - rect.width / 2) * 0.4;
+        var y = (e.clientY - rect.top - rect.height / 2) * 0.4;
+        magnet.style.transform = 'translate(' + x + 'px, ' + y + 'px) scale(1.1)';
+      });
+      magnet.addEventListener('mouseleave', function() {
+        magnet.style.transform = '';
+      });
+    });
+
+    /* timeline fill */
+    var timeline = document.getElementById('timeline');
+    var tlFill = document.getElementById('tlFill');
+    function updateTimelineFill(){
+      if(!timeline) return;
+      var r = timeline.getBoundingClientRect();
+      var vh = window.innerHeight;
+      var start = vh * 0.85;
+      var total = r.height;
+      var progressed = start - r.top;
+      var pct = Math.max(0, Math.min(1, progressed / (total + vh*0.3)));
+      if(tlFill) tlFill.style.height = (pct*100) + '%';
+    }
+    window.addEventListener('scroll', updateTimelineFill, { passive:true });
+    updateTimelineFill();
+
+    /* gallery carousel - UPDATED for Dark/Light images */
+    var galleryItems = [
+      { cat:'', title:'AURUM', href:'https://www.figma.com/proto/850hrlMwNuNH7fx5OEcijO/Untitled?node-id=2-87&starting-point-node-id=2%3A87', imgLight:'img/aurum.png', imgDark:'img/aurum.png' },
+      { cat:'', title:'SONIQ', href:'https://www.behance.net/gallery/241187845/SONIQ', imgLight:'img/soniq.png', imgDark:'img/soniq.png' },
+      { cat:'', title:'HOURZ', href:'https://www.behance.net/gallery/241187295/HOURZ-Luxury-Watch-Landing-Page', imgLight:'img/hourz.png', imgDark:'img/hourz.png' },
+      { cat:'', title:'Luxe', href:'https://www.behance.net/gallery/239336701/Minimalist-Interior-Landing-Page-Design', imgLight:'img/yana.png', imgDark:'img/yana.png' },
+      { cat:'', title:'Lume', href:'https://lume-studio-by-sara.vercel.app/', imgLight:'img/lume.png', imgDark:'img/lume.png' },
+      { cat:'', title:'FLORA', href:'https://www.behance.net/gallery/241188453/FLORA', imgLight:'img/flora.png', imgDark:'img/flora.png' },
+      { cat:'', title:'Healthcare App UI', href:'https://www.behance.net/gallery/241188153/Healthcare-App-UI-redesign', imgLight:'img/driefcase.png', imgDark:'img/driefcase.png' }
+    ];
+
+    (function initGalleryCarousel(){
+      var stage = document.getElementById('gcarStage');
+      var dotsWrap = document.getElementById('gcarDots');
+      var nextBtn = document.getElementById('gcarNext');
+      if(!stage) return;
+
+      var n = galleryItems.length;
+      var current = 0;
+      var visibleRange = 2;
+      var cards = [];
+      var dots = [];
+
+      galleryItems.forEach(function(item, i){
+        var card = document.createElement('a');
+        card.className = 'gcar-card';
+        card.href = item.href;
+        card.target = '_blank';
+        card.rel = 'noopener';
+        
+        // Inject both light and dark images using the new classes
+        card.innerHTML =
+          '<div class="gcar-img-wrap">' +
+            '<img src="' + item.imgLight + '" alt="' + item.title + '" class="theme-img-light">' +
+            '<img src="' + item.imgDark + '" alt="' + item.title + '" class="theme-img-dark">' +
+          '</div>' +
+          '<span class="gcar-badge">↗</span>' +
+          '<span class="gcar-cat">' + item.cat + '</span>' +
+          '<h4>' + item.title + '</h4>';
+          
+        card.addEventListener('click', function(e){
+          if(i !== current){ e.preventDefault(); goTo(i); }
+        });
+        stage.appendChild(card);
+        cards.push(card);
+
+        var dot = document.createElement('span');
+        dot.className = 'gcar-dot';
+        dot.addEventListener('click', function(){ goTo(i); });
+        dotsWrap.appendChild(dot);
+        dots.push(dot);
+      });
+
+      function shortestOffset(i, cur){
+        var raw = i - cur;
+        var half = n / 2;
+        if(raw > half) raw -= n;
+        if(raw < -half) raw += n;
+        return raw;
+      }
+
+      function render(){
+        cards.forEach(function(card, i){
+          var d = shortestOffset(i, current);
+          var abs = Math.abs(d);
+          card.classList.toggle('is-center', d === 0);
+          if(abs > visibleRange){
+            card.style.opacity = '0';
+            card.style.pointerEvents = 'none';
+            card.style.transform = 'translate(-50%,-50%) translateX(' + (d * 60) + 'px) scale(.7)';
+            card.style.zIndex = 0;
+          } else {
+            var tx = d * 128;
+            var ty = abs * 22;
+            var rot = d * 10;
+            var scale = d === 0 ? 1.08 : 1 - abs * 0.14;
+            card.style.opacity = '1';
+            card.style.pointerEvents = 'auto';
+            card.style.transform = 'translate(-50%,-50%) translateX(' + tx + 'px) translateY(' + ty + 'px) rotate(' + rot + 'deg) scale(' + scale + ')';
+            card.style.zIndex = 10 - abs;
+          }
+        });
+        dots.forEach(function(dot, i){ dot.classList.toggle('active', i === current); });
+      }
+
+      function goTo(i){
+        current = ((i % n) + n) % n;
+        render();
+        resetAutoplay();
+      }
+
+      if(nextBtn) nextBtn.addEventListener('click', function(){ goTo(current + 1); });
+
+      var startX = null;
+      stage.addEventListener('touchstart', function(e){ startX = e.touches[0].clientX; }, { passive:true });
+      stage.addEventListener('touchend', function(e){
+        if(startX === null) return;
+        var dx = e.changedTouches[0].clientX - startX;
+        if(Math.abs(dx) > 40){ goTo(current + (dx < 0 ? 1 : -1)); }
+        startX = null;
+      });
+
+      var autoplayTimer = null;
+      var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      function startAutoplay(){
+        if(reduceMotion) return;
+        autoplayTimer = setInterval(function(){ goToSilent(current + 1); }, 3200);
+      }
+      function resetAutoplay(){
+        if(autoplayTimer){ clearInterval(autoplayTimer); }
+        startAutoplay();
+      }
+      function goToSilent(i){
+        current = ((i % n) + n) % n;
+        render();
+      }
+
+      render();
+      startAutoplay();
+    })();
+  })();
+
+  /* theme toggle */
+  (function(){
+    var btns = document.querySelectorAll('.theme-toggle');
+    if(!btns.length) return;
+    btns.forEach(function(btn){
+      btn.addEventListener('click', function(){
+        var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+        if(isDark){
+          document.documentElement.removeAttribute('data-theme');
+          try{ localStorage.setItem('theme','light'); }catch(e){}
         } else {
-            htmlElement.classList.remove('dark');
+          document.documentElement.setAttribute('data-theme','dark');
+          try{ localStorage.setItem('theme','dark'); }catch(e){}
         }
+      });
+    });
+  })();
+</script>
 
-        themeToggleBtn.addEventListener('click', () => {
-            if (htmlElement.classList.contains('dark')) {
-                htmlElement.classList.remove('dark');
-                localStorage.theme = 'light';
-            } else {
-                htmlElement.classList.add('dark');
-                localStorage.theme = 'dark';
-            }
-        });
-
-        // 2. Mobile Menu Logic
-        const mobileBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const mobileLinks = document.querySelectorAll('.mobile-link');
-        let isMenuOpen = false;
-
-        mobileBtn.addEventListener('click', () => {
-            isMenuOpen = !isMenuOpen;
-            if (isMenuOpen) {
-                mobileMenu.classList.remove('opacity-0', '-translate-y-5', 'pointer-events-none');
-                mobileMenu.classList.add('opacity-100', 'translate-y-0', 'pointer-events-auto');
-            } else {
-                mobileMenu.classList.remove('opacity-100', 'translate-y-0', 'pointer-events-auto');
-                mobileMenu.classList.add('opacity-0', '-translate-y-5', 'pointer-events-none');
-            }
-        });
-
-        // Close menu when a link is clicked
-        mobileLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                isMenuOpen = false;
-                mobileMenu.classList.remove('opacity-100', 'translate-y-0', 'pointer-events-auto');
-                mobileMenu.classList.add('opacity-0', '-translate-y-5', 'pointer-events-none');
-            });
-        });
-
-        document.addEventListener('DOMContentLoaded', () => {
-            const cards = document.querySelectorAll('.gallery-card');
-            const track = document.getElementById('galleryTrack');
-            const prevBtn = document.getElementById('gPrevBtn');
-            const nextBtn = document.getElementById('gNextBtn');
-
-            // If the elements don't exist, stop running
-            if (!track) return;
-
-            let activeIndex = 2; // Start at the middle
-
-            function updateGallery() {
-                cards.forEach((card, index) => {
-                    card.classList.remove('active', 'prev', 'next', 'prev-2', 'next-2');
-                    
-                    const diff = index - activeIndex;
-
-                    if (diff === 0) {
-                        card.classList.add('active');
-                    } else if (diff === -1) {
-                        card.classList.add('prev');
-                    } else if (diff === 1) {
-                        card.classList.add('next');
-                    } else if (diff === -2) {
-                        card.classList.add('prev-2');
-                    } else if (diff === 2) {
-                        card.classList.add('next-2');
-                    } else {
-                        card.style.opacity = '0'; 
-                    }
-
-                    if (Math.abs(diff) <= 2) {
-                        card.style.opacity = '';
-                    }
-                });
-            }
-
-            updateGallery();
-
-            nextBtn.addEventListener('click', () => {
-                if (activeIndex < cards.length - 1) {
-                    activeIndex++;
-                    updateGallery();
-                }
-            });
-
-            prevBtn.addEventListener('click', () => {
-                if (activeIndex > 0) {
-                    activeIndex--;
-                    updateGallery();
-                }
-            });
-
-            cards.forEach((card, index) => {
-                card.addEventListener('click', () => {
-                    if (index !== activeIndex) {
-                        activeIndex = index;
-                        updateGallery();
-                    }
-                });
-            });
-        });
-    </script>
 </body>
 </html>
